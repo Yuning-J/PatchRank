@@ -48,7 +48,7 @@ python main.py --level asset --data paper_openPLC.json
 Given an OpenPLC with the following configuration:
 
 <p align="center">
-<img src="https://github.com/Yuning-J/VulnerabilityRanking/blob/main/figs/openPLC.png" alt="System" width="250px">
+<img src="https://github.com/Yuning-J/VulRG/blob/main/figs/openPLC.png" alt="System" width="250px">
 </p>
 
 The expected outcome for asset risk calculation and TOP-3 vulnerability ranking using our VulRG are:
@@ -94,11 +94,11 @@ Compared with the vulnerability ranking purely based on CVSS base-scores:
 Given a multi-layered network architecture: The External Firewall segregates the Internet from the enterprise's Demilitarized Zone (DMZ), where the Web Server and DNS Server reside. These servers handle external requests while minimizing exposure to the internal network. The Internal Firewall further fortifies the network by safeguarding critical assets within the Internal Subnet, which hosts key components such as the Application Server, Database Server, FTP Server, and Administrative Server. These assets are crucial for the organization’s operations and require stringent protection. Additionally, the User Subnet comprises user workstations that employees use for accessing resources in both the DMZ and Internal Subnets.
 
 <p align="center">
-<img src="https://github.com/Yuning-J/VulnerabilityRanking/blob/main/figs/NetworkSample.png" alt="System" width="370px">
+<img src="https://github.com/Yuning-J/VulRG/blob/main/figs/NetworkSample.png" alt="System" width="370px">
 </p>
 
 VulRG generates vulnerability ranking for the system. Here is an example of vulnerabilities ranking for the Database Server: 
 
 <p align="center">
-<img src="https://github.com/Yuning-J/VulnerabilityRanking/blob/main/figs/SysVulRank.png" alt="System" width="770px">
+<img src="https://github.com/Yuning-J/VulRG/blob/main/figs/SysVulRank.png" alt="System" width="770px">
 </p>
