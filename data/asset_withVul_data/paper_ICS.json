@@ -1,0 +1,378 @@
+{
+  "Assets": [
+    {
+      "asset_id": 1,
+      "type": "VPN Server",
+      "name": "VPN Server",
+      "criticality_level": 4,
+      "ip_address": "192.168.1.10",
+      "mac_address": "00:11:22:33:44:10",
+      "components": [
+        {
+          "id": 1,
+          "type": "VPN Application",
+          "vendor": "Pulse Secure",
+          "name": "Pulse Connect Secure",
+          "version": "9.0R3",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2019-11510",
+              "cvss": 10.0,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "likelihood": 3.9,
+              "impact": 6.0,
+              "exploit": 1,
+              "scopeChanged": true,
+              "ransomWare": 1,
+              "component_id": 1,
+              "epss": 0.97297
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 2,
+      "type": "Web Server",
+      "name": "Web Server",
+      "criticality_level": 3,
+      "ip_address": "192.168.1.20",
+      "mac_address": "00:11:22:33:44:20",
+      "components": [
+        {
+          "id": 1,
+          "type": "Web Server Application",
+          "vendor": "Microsoft",
+          "name": "IIS 6.0",
+          "version": "6.0",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2017-7269",
+              "cvss": 9.8,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 3.9,
+              "impact": 5.9,
+              "exploit": 1,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.97321
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 3,
+      "type": "Workstation",
+      "name": "Workstation",
+      "criticality_level": 3,
+      "ip_address": "192.168.1.30",
+      "mac_address": "00:11:22:33:44:30",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Microsoft",
+          "name": "Windows 10",
+          "version": "1909",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2017-0143",
+              "cvss": 8.1,
+              "cvssV3Vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 2.2,
+              "impact": 5.9,
+              "exploit": 1,
+              "scopeChanged": false,
+              "ransomWare": 1,
+              "component_id": 1,
+              "epss": 0.96304
+            },
+            {
+              "cve_id": "CVE-2017-8692",
+              "cvss": 7.5,
+              "cvssV3Vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "likelihood": 1.6,
+              "impact": 5.9,
+              "exploit": 1,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.14441
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 4,
+      "type": "Historian Database",
+      "name": "Historian Database",
+      "criticality_level": 4,
+      "ip_address": "192.168.2.10",
+      "mac_address": "00:11:22:33:44:40",
+      "components": [
+        {
+          "id": 1,
+          "type": "Database Application",
+          "vendor": "OSIsoft",
+          "name": "PI Server",
+          "version": "3.4.415",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2021-1636",
+              "cvss": 8.8,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 2.8,
+              "impact": 5.9,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.00157
+            },
+            {
+              "cve_id": "CVE-2023-21528",
+              "cvss": 7.8,
+              "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 1.8,
+              "impact": 5.9,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.00081
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 5,
+      "type": "Human Machine Interface",
+      "name": "HMI",
+      "criticality_level": 5,
+      "ip_address": "192.168.2.20",
+      "mac_address": "00:11:22:33:44:50",
+      "components": [
+        {
+          "id": 1,
+          "type": "HMI Software",
+          "vendor": "Siemens",
+          "name": "SIMATIC WinCC",
+          "version": "7.5",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2016-5743",
+              "cvss": 9.8,
+              "cvssV3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 3.9,
+              "impact": 5.9,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.04346
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 6,
+      "type": "Engineering Workstation",
+      "name": "Engineering Workstation",
+      "criticality_level": 5,
+      "ip_address": "192.168.2.30",
+      "mac_address": "00:11:22:33:44:60",
+      "components": [
+        {
+          "id": 1,
+          "type": "Engineering Software",
+          "vendor": "Schneider Electric",
+          "name": "EcoStruxure",
+          "version": "3.0",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2019-10922",
+              "cvss": 9.8,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 3.9,
+              "impact": 5.9,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.00342
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 7,
+      "type": "Programmable Logic Controller",
+      "name": "PLC",
+      "criticality_level": 5,
+      "ip_address": "192.168.3.10",
+      "mac_address": "00:11:22:33:44:70",
+      "components": [
+        {
+          "id": 1,
+          "type": "PLC Software",
+          "vendor": "Siemens",
+          "name": "S7-1500",
+          "version": "1.8",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2016-9159",
+              "cvss": 5.9,
+              "cvssV3Vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "likelihood": 2.2,
+              "impact": 3.6,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.002
+            },
+            {
+              "cve_id": "CVE-2016-8673",
+              "cvss": 8.8,
+              "cvssV3Vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "likelihood": 2.8,
+              "impact": 5.9,
+              "exploit": 0,
+              "scopeChanged": false,
+              "ransomWare": 0,
+              "component_id": 1,
+              "epss": 0.00108
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    }
+  ],
+  "Connections": [
+    {
+      "src_ip": "0.0.0.0",
+      "src_mac": "00:00:00:00:00:00",
+      "src_subnet": "0.0.0.0/0",
+      "destination_asset_id": 1,
+      "dst_ip": "192.168.1.10",
+      "dst_mac": "00:11:22:33:44:10",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "src_ip": "0.0.0.0",
+      "src_mac": "00:00:00:00:00:00",
+      "src_subnet": "0.0.0.0/0",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.20",
+      "dst_mac": "00:11:22:33:44:20",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 1,
+      "src_ip": "192.168.1.10",
+      "src_mac": "00:11:22:33:44:10",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.1.30",
+      "dst_mac": "00:11:22:33:44:30",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.20",
+      "src_mac": "00:11:22:33:44:20",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.1.30",
+      "dst_mac": "00:11:22:33:44:30",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.1.30",
+      "src_mac": "00:11:22:33:44:30",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 4,
+      "dst_ip": "192.168.2.10",
+      "dst_mac": "00:11:22:33:44:40",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.1.30",
+      "src_mac": "00:11:22:33:44:30",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 5,
+      "dst_ip": "192.168.2.20",
+      "dst_mac": "00:11:22:33:44:50",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.1.30",
+      "src_mac": "00:11:22:33:44:30",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 6,
+      "dst_ip": "192.168.2.30",
+      "dst_mac": "00:11:22:33:44:60",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 4,
+      "src_ip": "192.168.2.10",
+      "src_mac": "00:11:22:33:44:40",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 7,
+      "dst_ip": "192.168.3.10",
+      "dst_mac": "00:11:22:33:44:70",
+      "dst_subnet": "192.168.3.0/24"
+    },
+    {
+      "source_asset_id": 5,
+      "src_ip": "192.168.2.20",
+      "src_mac": "00:11:22:33:44:50",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 7,
+      "dst_ip": "192.168.3.10",
+      "dst_mac": "00:11:22:33:44:70",
+      "dst_subnet": "192.168.3.0/24"
+    },
+    {
+      "source_asset_id": 6,
+      "src_ip": "192.168.2.30",
+      "src_mac": "00:11:22:33:44:60",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 7,
+      "dst_ip": "192.168.3.10",
+      "dst_mac": "00:11:22:33:44:70",
+      "dst_subnet": "192.168.3.0/24"
+    }
+  ]
+}

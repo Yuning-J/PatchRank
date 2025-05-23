@@ -1,0 +1,481 @@
+{
+  "Assets": [
+    {
+      "asset_id": 1,
+      "type": "Firewall",
+      "name": "Firewall",
+      "criticality_level": 2,
+      "ip_address": "192.168.1.10",
+      "mac_address": "00:11:22:33:44:10",
+      "components": [
+        {
+          "id": 1,
+          "type": "Web Interface",
+          "vendor": "F5 Networks",
+          "name": "BIG-IP",
+          "version": "14.1.2.5",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2020-5902",
+              "cvss": 9.8,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 3.9,
+              "impact": 5.9,
+              "exploit": 1,
+              "scopeChanged": false,
+              "ransomWare": 1,
+              "component_id": 1,
+              "epss": 0.97542,
+              "description": "Remote Code Execution (RCE) vulnerability in the Traffic Management User Interface (TMUI) of BIG-IP."
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0]
+      ]
+    },
+    {
+      "asset_id": 2,
+      "type": "VPN Appliance",
+      "name": "VPN",
+      "criticality_level": 2,
+      "ip_address": "192.168.1.11",
+      "mac_address": "00:11:22:33:44:11",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Ivanti",
+          "name": "IvantiLinuxOS",
+          "version": "Custom 4.9",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "VPN Application",
+          "vendor": "Ivanti",
+          "name": "IvantiConnectSecure",
+          "version": "8.3",
+          "vulnerabilities": [
+            {
+              "cve_id": "CVE-2019-11510",
+              "cvss": 10.0,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "likelihood": 6.0,
+              "impact": 3.9,
+              "exploit": 1,
+              "scopeChanged": true,
+              "ransomWare": 1,
+              "component_id": 2,
+              "epss": 0.97297,
+              "description": "In Pulse Secure Pulse Connect Secure (PCS) 8.2 before 8.2R12.1, 8.3 before 8.3R7.1, and 9.0 before 9.0R3.4, an unauthenticated remote attacker can send a specially crafted URI to perform an arbitrary file reading vulnerability ."
+            },
+            {
+              "cve_id": "CVE-2019-11540",
+              "cvss": 8.3,
+              "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "likelihood": 1.6,
+              "impact": 6.0,
+              "exploit": 0,
+              "scopeChanged": true,
+              "ransomWare": 0,
+              "component_id": 2,
+              "epss": 0.03547,
+              "description": "In Pulse Secure Pulse Connect Secure version 9.0RX before 9.0R3.4 and 8.3RX before 8.3R7.1 and Pulse Policy Secure version 9.0RX before 9.0R3.2 and 5.4RX before 5.4R7.1, an unauthenticated, remote attacker can conduct a session hijacking attack."
+            }
+          ]
+        }
+      ],
+      "adjacency_matrix": [
+        [0, 0],
+        [1, 0]
+      ]
+    },
+    {
+  "asset_id": 3,
+  "type": "Mail Server",
+  "name": "MailS",
+  "criticality_level": 4,
+  "ip_address": "192.168.2.10",
+  "mac_address": "00:11:22:33:44:12",
+  "components": [
+    {
+      "id": 1,
+      "type": "Hardware",
+      "vendor": "Citrix",
+      "name": "CitrixGateway",
+      "vulnerabilities": []
+    },
+    {
+      "id": 2,
+      "type": "Gateway Firmware",
+      "vendor": "Citrix",
+      "name": "CitrixGatewayFirmware",
+      "version": "13.0",
+      "vulnerabilities": [
+        {
+          "cve_id": "CVE-2019-19781",
+          "cvss": 9.8,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "likelihood": 3.9,
+          "impact": 5.9,
+          "exploit": 1,
+          "scopeChanged": false,
+          "ransomWare": 1,
+          "component_id": 2,
+          "epss": 0.97538,
+          "description": "An issue was discovered in Citrix Application Delivery Controller (ADC) and Gateway 10.5, 11.1, 12.0, 12.1, and 13.0. They allow Directory Traversal."
+        },
+        {
+          "cve_id": "CVE-2022-27518",
+          "cvss": 9.8,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "likelihood": 3.9,
+          "impact": 5.9,
+          "exploit": 1,
+          "scopeChanged": true,
+          "ransomWare": 0,
+          "component_id": 2,
+          "epss": 0.20483,
+          "description": "Unauthenticated remote arbitrary code execution."
+        }
+      ]
+    }
+  ],
+  "adjacency_matrix": [
+    [0, 0],
+    [1, 0]
+  ]
+},
+    {
+  "asset_id": 4,
+  "type": "Network Appliance",
+  "name": "WebS1",
+  "criticality_level": 2,
+  "ip_address": "192.168.2.40",
+  "mac_address": "00:11:22:33:44:24",
+  "components": [
+    {
+      "id": 1,
+      "type": "Operating System",
+      "vendor": "Juniper",
+      "name": "Junos",
+      "version": "15.1",
+      "vulnerabilities": [
+        {
+          "cve_id": "CVE-2020-1631",
+          "cvss": 9.8,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "likelihood": 3.9,
+          "impact": 5.9,
+          "exploit": 1,
+          "scopeChanged": false,
+          "ransomWare": 0,
+          "component_id": 1,
+          "epss": 0.00529,
+          "description": "Improper access control vulnerability in Junos OS allowing attackers to gain unauthorized access to services."
+        }
+      ]
+    }
+  ],
+  "adjacency_matrix": [
+    [0]
+  ]
+},
+{
+  "asset_id": 5,
+  "type": "Web Server",
+  "name": "WebS2",
+  "criticality_level": 3,
+  "ip_address": "192.168.3.21",
+  "mac_address": "00:11:22:33:44:14",
+  "components": [
+    {
+      "id": 1,
+      "type": "Web Application",
+      "vendor": "Fortinet",
+      "name": "FortiOS",
+      "version": "6.0.4",
+      "vulnerabilities": [
+        {
+          "cve_id": "CVE-2018-13379",
+          "cvss": 9.8,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "likelihood": 3.9,
+          "impact": 5.2,
+          "exploit": 1,
+          "scopeChanged": false,
+          "ransomWare": 1,
+          "component_id": 1,
+          "epss": 0.96863,
+          "description": "An Improper Limitation of a Pathname to a Restricted Directory (Path Traversal) in Fortinet FortiOS 6.0.0 to 6.0.4, 5.6.3 to 5.6.7 and 5.4.6 to 5.4.12 under SSL VPN web portal allows an unauthenticated attacker to download system files via specially crafted HTTP resource requests."
+        },
+        {
+          "cve_id": "CVE-2021-43206",
+          "cvss": 4.3,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+          "likelihood": 2.8,
+          "impact": 1.4,
+          "exploit": 0,
+          "scopeChanged": false,
+          "ransomWare": 0,
+          "component_id": 1,
+          "epss": 0.00072,
+          "description": "A server-generated error message containing sensitive information in Fortinet FortiOS 7.0.0 through 7.0.3, 6.4.0 through 6.4.8, 6.2.x, 6.0.x and FortiProxy 7.0.0 through 7.0.1, 2.0.x allows malicious webservers to retrieve a web proxy's client username and IP via same origin HTTP requests triggering proxy-generated HTTP status codes pages."
+        }
+      ]
+    }
+  ],
+  "adjacency_matrix": [
+    [0]
+  ]
+},    {
+  "asset_id": 6,
+  "type": "Domain Controller",
+  "name": "DC1",
+  "criticality_level": 6,
+  "ip_address": "192.168.3.20",
+  "mac_address": "00:11:22:33:44:13",
+  "components": [
+    {
+      "id": 1,
+      "type": "Operating System",
+      "vendor": "Microsoft",
+      "name": "WindowsServer",
+      "version": "20H2",
+      "vulnerabilities": [
+        {
+          "cve_id": "CVE-2020-1472",
+          "cvss": 10.0,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "likelihood": 3.9,
+          "impact": 6.0,
+          "exploit": 1,
+          "scopeChanged": true,
+          "ransomWare": 1,
+          "component_id": 1,
+          "epss": 0.40299,
+          "description": "An elevation of privilege vulnerability exists when an attacker establishes a vulnerable Netlogon secure channel connection to a domain controller, using the Netlogon Remote Protocol (MS-NRPC). An attacker who successfully exploited the vulnerability could run a specially crafted application on a device on the network. Post initial access, the APT actors use multiple techniques to expand access to the environment, leveraging CVE-2020-1472 in Windows Netlogon to escalate privileges and obtain access to Windows AD servers."
+        },
+                {
+          "cve_id": "CVE-2021-31955",
+          "cvss": 5.5,
+                  "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+          "likelihood": 1.8,
+          "impact": 3.6,
+          "exploit": 1,
+          "scopeChanged": false,
+          "ransomWare": 0,
+          "component_id": 1,
+          "epss": 0.01042,
+          "description": "Windows Kernel Information Disclosure Vulnerability."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Directory Service",
+      "vendor": "Microsoft",
+      "name": "ActiveDirectory",
+      "version": "2020",
+      "vulnerabilities": [
+        {
+          "cve_id": "CVE-2021-42278",
+          "cvss": 8.8,
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "likelihood": 2.8,
+          "impact": 5.9,
+          "exploit": 1,
+          "scopeChanged": false,
+          "ransomWare": 1,
+          "component_id": 2,
+          "epss": 0.00747,
+          "description": "Active Directory Domain Services Elevation of Privilege Vulnerability."
+        }
+      ]
+    }
+  ],
+  "adjacency_matrix": [
+    [0, 0],
+    [1, 0]
+  ]
+}
+  ],
+  "Connections": [
+    {
+      "source_asset_id": 1,
+      "src_ip": "192.168.1.10",
+      "src_mac": "00:11:22:33:44:10",
+      "src_subnet": "192.168.1.0/24",
+      "protocol": "UDP",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.11",
+      "dst_mac": "00:11:22:33:44:11",
+      "dst_subnet": "192.168.1.0/24"
+    },
+        {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.11",
+      "src_mac": "00:11:22:33:44:11",
+      "src_subnet": "192.168.1.0/24",
+      "protocol": "UDP",
+      "destination_asset_id": 1,
+      "dst_ip": "192.168.1.10",
+      "dst_mac": "00:11:22:33:44:10",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.11",
+      "src_mac": "00:11:22:33:44:11",
+      "src_subnet": "192.168.1.0/24",
+      "protocol": "UDP",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.10",
+      "dst_mac": "00:11:22:33:44:12",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.2.10",
+      "src_mac": "00:11:22:33:44:12",
+      "src_subnet": "192.168.2.0/24",
+      "protocol": "UDP",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.11",
+      "dst_mac": "00:11:22:33:44:11",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 1,
+      "src_ip": "192.168.1.10",
+      "src_mac": "00:11:22:33:44:10",
+      "src_subnet": "192.168.1.0/24",
+      "protocol": "SMTP",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.10",
+      "dst_mac": "00:11:22:33:44:12",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.2.10",
+      "src_mac": "00:11:22:33:44:12",
+      "src_subnet": "192.168.2.0/24",
+      "protocol": "SMTP",
+      "destination_asset_id": 1,
+      "dst_ip": "192.168.1.10",
+      "dst_mac": "00:11:22:33:44:10",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.2.10",
+      "src_mac": "00:11:22:33:44:12",
+      "src_subnet": "192.168.2.0/24",
+      "protocol": "HTTPS",
+      "destination_asset_id": 5,
+      "dst_ip": "192.168.3.21",
+      "dst_mac": "00:11:22:33:44:14",
+      "dst_subnet": "192.168.3.0/24"
+    },
+    {
+      "source_asset_id": 5,
+      "src_ip": "192.168.3.21",
+      "src_mac": "00:11:22:33:44:14",
+      "src_subnet": "192.168.3.0/24",
+      "protocol": "HTTPS",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.10",
+      "dst_mac": "00:11:22:33:44:12",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.11",
+      "src_mac": "00:11:22:33:44:11",
+      "src_subnet": "192.168.1.0/24",
+      "protocol": "HTTPS",
+      "destination_asset_id": 4,
+      "dst_ip": "192.168.2.40",
+    "dst_mac": "00:11:22:33:44:24",
+    "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 4,
+      "src_ip": "192.168.2.40",
+      "src_mac": "00:11:22:33:44:24",
+      "src_subnet": "192.168.2.0/24",
+      "protocol": "HTTPS",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.11",
+      "dst_mac": "00:11:22:33:44:11",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+    "source_asset_id": 2,
+      "src_ip": "192.168.1.11",
+      "src_mac": "00:11:22:33:44:11",
+      "src_subnet": "192.168.1.0/24",
+    "destination_asset_id": 6,
+    "dst_ip": "192.168.3.20",
+    "dst_mac": "00:11:22:33:44:13",
+    "dst_subnet": "192.168.3.0/24",
+    "protocol": "LDAP"
+  },
+        {
+    "source_asset_id": 6,
+    "src_ip": "192.168.3.20",
+    "src_mac": "00:11:22:33:44:13",
+    "src_subnet": "192.168.3.0/24",
+    "destination_asset_id": 2,
+      "dst_ip": "192.168.1.11",
+      "dst_mac": "00:11:22:33:44:11",
+      "dst_subnet": "192.168.1.0/24",
+    "protocol": "LDAP"
+  },
+  {
+    "source_asset_id": 5,
+      "src_ip": "192.168.3.21",
+      "src_mac": "00:11:22:33:44:14",
+      "src_subnet": "192.168.3.0/24",
+    "destination_asset_id": 6,
+    "dst_ip": "192.168.3.20",
+    "dst_mac": "00:11:22:33:44:13",
+    "dst_subnet": "192.168.3.0/24",
+    "protocol": "LDAP"
+  },
+      {
+    "source_asset_id": 6,
+    "src_ip": "192.168.3.20",
+    "src_mac": "00:11:22:33:44:13",
+    "src_subnet": "192.168.3.0/24",
+    "destination_asset_id": 5,
+      "dst_ip": "192.168.3.21",
+      "dst_mac": "00:11:22:33:44:14",
+      "dst_subnet": "192.168.3.0/24",
+    "protocol": "LDAP"
+  },
+  {
+    "source_asset_id": null,
+    "src_ip": "0.0.0.0",
+    "src_mac": "00:00:00:00:00:00",
+    "src_subnet": "0.0.0.0/0",
+    "destination_asset_id": 1,
+    "dst_ip": "192.168.1.10",
+    "dst_mac": "00:11:22:33:44:10",
+    "dst_subnet": "192.168.1.0/24"
+  },
+  {
+    "source_asset_id": null,
+    "src_ip": "0.0.0.0",
+    "src_mac": "00:00:00:00:00:00",
+    "src_subnet": "0.0.0.0/0",
+    "destination_asset_id": 4,
+    "dst_ip": "192.168.2.40",
+    "dst_mac": "00:11:22:33:44:24",
+    "dst_subnet": "192.168.2.0/24"
+  }
+  ]
+}

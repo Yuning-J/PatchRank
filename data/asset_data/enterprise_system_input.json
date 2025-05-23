@@ -1,0 +1,606 @@
+{
+  "Assets": [
+    {
+      "asset_id": 1,
+      "type": "Web Server",
+      "name": "Web Server",
+      "criticality_level": 2,
+      "ip_address": "192.168.1.10",
+      "mac_address": "00:11:22:33:44:10",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Canonical",
+          "name": "Ubuntu",
+          "version": "20.04",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "Web Application",
+          "vendor": "Apache",
+          "name": "Apache HTTP Server",
+          "version": "2.4.49",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        },
+        {
+          "id": 3,
+          "type": "Application Server",
+          "vendor": "Apache",
+          "name": "Apache Tomcat",
+          "version": "9.0.2",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "asset_id": 2,
+      "type": "DNS Server",
+      "name": "DNS Server",
+      "criticality_level": 2,
+      "ip_address": "192.168.1.20",
+      "mac_address": "00:11:22:33:44:20",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Canonical",
+          "name": "Ubuntu",
+          "version": "20.04",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "DNS Application",
+          "vendor": "ISC",
+          "name": "BIND DNS Server",
+          "version": "9.16.1",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        },
+        {
+          "id": 3,
+          "type": "DNS Software",
+          "vendor": "PowerDNS",
+          "name": "PowerDNS Recursor",
+          "version": "4.5.3",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "asset_id": 3,
+      "type": "Application Server",
+      "name": "Application Server",
+      "criticality_level": 5,
+      "ip_address": "192.168.2.20",
+      "mac_address": "00:11:22:33:44:21",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Debian",
+          "name": "Debian Linux",
+          "version": "12.0",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "Application Server",
+          "vendor": "Oracle",
+          "name": "Oracle WebLogic Server",
+          "version": "12.2.1.4.0",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        },
+        {
+          "id": 3,
+          "type": "Java Runtime",
+          "vendor": "Oracle",
+          "name": "Java SE Runtime Environment",
+          "version": "8u281",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        },
+        {
+          "id": 4,
+          "type": "Web Server",
+          "vendor": "Apache",
+          "name": "Apache HTTP Server",
+          "version": "2.4.49",
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "asset_id": 4,
+      "type": "Database Server",
+      "name": "Database Server",
+      "criticality_level": 5,
+      "ip_address": "192.168.2.30",
+      "mac_address": "00:11:22:33:44:22",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Microsoft",
+          "name": "Windows Server",
+          "version": "2019",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "Database",
+          "vendor": "Microsoft",
+          "name": "SQL Server",
+          "version": "2019",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        },
+        {
+          "id": 3,
+          "type": "Backup Software",
+          "vendor": "Veeam",
+          "name": "Veeam Backup & Replication",
+          "version": "11a",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "asset_id": 5,
+      "type": "FTP Server",
+      "name": "FTP Server",
+      "criticality_level": 3,
+      "ip_address": "192.168.2.40",
+      "mac_address": "00:11:22:33:44:23",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Ubuntu",
+          "name": "Ubuntu Server",
+          "version": "20.04",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "FTP Application",
+          "vendor": "FileZilla",
+          "name": "FileZilla Server",
+          "version": "4.3.3",
+          "embedded_in": 1,
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "asset_id": 6,
+      "type": "Administrative Server",
+      "name": "Administrative Server",
+      "criticality_level": 4,
+      "ip_address": "192.168.2.50",
+      "mac_address": "00:11:22:33:44:24",
+      "components": [
+        {
+          "id": 1,
+          "type": "Operating System",
+          "vendor": "Microsoft",
+          "name": "Windows Server",
+          "version": "2019",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "Monitoring Software",
+          "vendor": "Nagios",
+          "name": "Nagios XI",
+          "version": "5.8.5",
+          "vulnerabilities": []
+        },
+        {
+          "id": 3,
+          "type": "Security Monitoring Tool",
+          "vendor": "Splunk",
+          "name": "Splunk Enterprise",
+          "version": "8.1.0",
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+  "asset_id": 7,
+  "type": "Workstation",
+  "name": "User Workstation",
+  "criticality_level": 3,
+      "ip_address": "192.168.3.10",
+    "mac_address": "00:11:22:33:44:30",
+  "components": [
+    {
+      "id": 1,
+      "type": "Operating System",
+      "vendor": "Microsoft",
+      "name": "Windows 10 21H2",
+      "version": "10.0.19044.3448",
+      "vulnerabilities": []
+    },
+    {
+      "id": 2,
+      "type": "Office Suite",
+      "vendor": "Microsoft",
+      "name": "Microsoft Office",
+      "version": "2019",
+      "vulnerabilities": []
+    },
+    {
+      "id": 3,
+      "type": "Web Browser",
+      "vendor": "Google",
+      "name": "Google Chrome",
+      "version": "122.0.6261.57",
+      "vulnerabilities": []
+    }
+  ],
+  "adjacency_matrix": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0
+    ]
+  ]
+},
+    {
+      "asset_id": 8,
+      "type": "External Firewall",
+      "name": "External Firewall",
+      "criticality_level": 2,
+      "ip_address": "192.168.1.1",
+      "mac_address": "00:11:22:33:44:01",
+      "components": [
+        {
+          "id": 1,
+          "type": "Hardware",
+          "vendor": "Cisco",
+          "name": "ASA 5505",
+          "version": "5505",
+          "vulnerabilities": []
+        },
+        {
+          "id": 2,
+          "type": "Firmware",
+          "vendor": "Cisco",
+          "name": "ASA 5505 Firmware",
+          "version": "9.6(4)",
+          "vulnerabilities": []
+        }
+      ],
+      "adjacency_matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+  "asset_id": 9,
+  "type": "Internal Firewall",
+  "name": "Internal Firewall",
+  "criticality_level": 2,
+  "ip_address": "192.168.1.254",
+  "mac_address": "00:11:22:33:44:02",
+  "components": [
+    {
+      "id": 1,
+      "type": "Firewall Appliance",
+      "vendor": "Netgate",
+      "name": "Netgate 4100",
+      "version": "1.0",
+      "vulnerabilities": []
+    },
+    {
+      "id": 2,
+      "type": "Firewall Appliance",
+      "vendor": "Netgate",
+      "name": "pfSense",
+      "version": "2.7.0",
+      "vulnerabilities": []
+    }
+  ],
+  "adjacency_matrix": [
+    [0, 0],
+    [2, 0]
+  ]
+}
+  ],
+  "Connections": [
+    {
+      "source_asset_id": 1,
+      "src_ip": "192.168.1.10",
+      "src_mac": "00:11:22:33:44:10",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 9,
+      "dst_ip": "192.168.1.254",
+      "dst_mac": "00:11:22:33:44:02",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.20",
+      "src_mac": "00:11:22:33:44:20",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 1,
+      "dst_ip": "192.168.1.10",
+      "dst_mac": "00:11:22:33:44:10",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 2,
+      "src_ip": "192.168.1.20",
+      "src_mac": "00:11:22:33:44:20",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 9,
+      "dst_ip": "192.168.1.254",
+      "dst_mac": "00:11:22:33:44:02",
+      "dst_subnet": "192.168.1.0/24"
+    },
+        {
+      "source_asset_id": 1,
+      "src_ip": "192.168.1.10",
+      "src_mac": "00:11:22:33:44:10",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.20",
+      "dst_mac": "00:11:22:33:44:20",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 3,
+      "src_ip": "192.168.2.20",
+      "src_mac": "00:11:22:33:44:21",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 4,
+      "dst_ip": "192.168.2.30",
+      "dst_mac": "00:11:22:33:44:22",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 4,
+      "src_ip": "192.168.2.30",
+      "src_mac": "00:11:22:33:44:22",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.20",
+      "dst_mac": "00:11:22:33:44:21",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 5,
+      "src_ip": "192.168.2.40",
+      "src_mac": "00:11:22:33:44:23",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 4,
+      "dst_ip": "192.168.2.30",
+      "dst_mac": "00:11:22:33:44:22",
+      "dst_subnet": "192.168.2.0/24"
+    },
+        {
+      "source_asset_id": 4,
+      "src_ip": "192.168.2.30",
+      "src_mac": "00:11:22:33:44:22",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 5,
+      "dst_ip": "192.168.2.40",
+      "dst_mac": "00:11:22:33:44:23",
+      "dst_subnet": "192.168.2.0/24"
+    },
+        {
+      "source_asset_id": 6,
+      "src_ip": "192.168.2.50",
+      "src_mac": "00:11:22:33:44:24",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 4,
+      "dst_ip": "192.168.2.30",
+      "dst_mac": "00:11:22:33:44:22",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 6,
+      "src_ip": "192.168.2.50",
+      "src_mac": "00:11:22:33:44:24",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.20",
+      "dst_mac": "00:11:22:33:44:21",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 7,
+      "src_ip": "192.168.3.10",
+      "src_mac": "00:11:22:33:44:30",
+      "src_subnet": "192.168.3.0/24",
+      "destination_asset_id": 9,
+      "dst_ip": "192.168.2.1",
+      "dst_mac": "00:11:22:33:44:02",
+      "dst_subnet": "192.168.2.0/24"
+    },
+    {
+      "source_asset_id": 8,
+      "src_ip": "192.168.1.1",
+      "src_mac": "00:11:22:33:44:01",
+      "src_subnet": "192.168.1.0/24",
+      "dst_ip": "0.0.0.0",
+      "dst_mac": "00:00:00:00:00:00",
+      "dst_subnet": "0.0.0.0/0"
+    },
+        {
+      "src_ip": "0.0.0.0",
+      "src_mac": "0:00:00:00:00:00",
+      "src_subnet": "0.0.0.0/0",
+      "destination_asset_id": 8,
+      "dst_ip": "192.168.1.1",
+      "dst_mac": "00:11:22:33:44:01",
+      "dst_subnet": "192.168.1.0/24"
+        },
+    {
+      "source_asset_id": 8,
+      "src_ip": "192.168.1.1",
+      "src_mac": "00:11:22:33:44:01",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 1,
+      "dst_ip": "192.168.1.10",
+      "dst_mac": "00:11:22:33:44:10",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 8,
+      "src_ip": "192.168.1.1",
+      "src_mac": "00:11:22:33:44:01",
+      "src_subnet": "192.168.1.0/24",
+      "destination_asset_id": 2,
+      "dst_ip": "192.168.1.20",
+      "dst_mac": "00:11:22:33:44:20",
+      "dst_subnet": "192.168.1.0/24"
+    },
+    {
+      "source_asset_id": 9,
+      "src_ip": "192.168.1.254",
+      "src_mac": "00:11:22:33:44:02",
+      "src_subnet": "192.168.1.0/24",
+      "dst_ip": "192.168.2.1",
+      "dst_mac": "00:11:22:33:44:03",
+      "dst_subnet": "192.168.2.0/24"
+    },
+        {
+      "src_ip": "192.168.2.1",
+      "src_mac": "00:11:22:33:44:03",
+      "src_subnet": "192.168.2.0/24",
+      "destination_asset_id": 3,
+      "dst_ip": "192.168.2.20",
+      "dst_mac": "00:11:22:33:44:21",
+      "dst_subnet": "192.168.2.0/24"
+    }
+  ]
+}
