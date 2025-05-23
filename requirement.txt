@@ -1,0 +1,8 @@
+numpy
+torch
+torch-geometric
+matplotlib 
+networkx
+requests
+urllib3
+scipy
