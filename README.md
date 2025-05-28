@@ -1,19 +1,19 @@
-# VulnerabilityRanking
+# PatchRanking
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Yuning-J/VulnerabilityRanking">
+  <a href="https://github.com/Yuning-J/PatchRank">
   </a>
   <br />
 
   <!-- Badges -->
-  <img src="https://img.shields.io/github/repo-size/Yuning-J/VulnerabilityRanking?style=for-the-badge" alt="GitHub repo size" height="25">
-  <img src="https://img.shields.io/github/last-commit/Yuning-J/VulnerabilityRanking?style=for-the-badge" alt="GitHub last commit" height="25">
-  <img src="https://img.shields.io/github/license/Yuning-J/VulnerabilityRanking?style=for-the-badge" alt="License" height="25">
+  <img src="https://img.shields.io/github/repo-size/Yuning-J/PatchRank?style=for-the-badge" alt="GitHub repo size" height="25">
+  <img src="https://img.shields.io/github/last-commit/Yuning-J/PatchRank?style=for-the-badge" alt="GitHub last commit" height="25">
+  <img src="https://img.shields.io/github/license/Yuning-J/PatchRank?style=for-the-badge" alt="License" height="25">
   <br />
   
-  <h3 align="center"> VulRG: Multi-Level Explainable Vulnerability Patch Ranking</h3>
+  <h3 align="center"> PatchRank: Multi-Level Explainable Vulnerability Patch Ranking</h3>
   <p align="center">
    This project presents a comprehensive framework for risk aggregation and vulnerability prioritization tailored for complex systems, such as industrial control systems (ICS), IoT environments, and enterprise networks. Our method employs a graph-based approach to model system dependencies and attack paths, enabling a multi-level analysis that captures both asset and component-level risks.
  
