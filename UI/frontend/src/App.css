@@ -1,0 +1,137 @@
+/* Basic reset and container styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f8fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header styles */
+.App-header {
+  background-color: #2c3e50;
+  padding: 20px 0;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.App-header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.App-header nav ul li {
+  margin-left: 20px;
+}
+
+.App-header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 0;
+  transition: opacity 0.2s;
+}
+
+.App-header nav ul li a:hover {
+  opacity: 0.8;
+}
+
+/* Main content styles */
+main.container {
+  padding-top: 30px;
+  padding-bottom: 40px;
+  min-height: calc(100vh - 140px); /* Account for header and footer height */
+}
+
+/* Footer styles */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* About page styles */
+.about-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-page h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.about-page p {
+  margin-bottom: 15px;
+}
+
+.section {
+  margin-top: 25px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section h3 {
+  color: #3b82f6;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.section ul, .section ol {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.section li {
+  margin-bottom: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .App-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .App-header nav {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .App-header nav ul {
+    justify-content: flex-start;
+  }
+
+  .App-header nav ul li {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+}
