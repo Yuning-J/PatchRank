@@ -30,6 +30,10 @@ pip install -r requirements.txt
 ## Usage Guide: 
 Use main.py to compute asset-level or system-wide risk aggregation and vulnerability ranking. The user can customize the analysis by specifying the level of aggregation, the input data file, and whether to rank vulnerabilities based solely on CVSS base scores.
 
+**DEMO**
+
+Please go to the folder "UI" and check the README.md for instructions on how to install and run the demo web-app.
+
 **Example Command**
 ```bash
 python main.py --level system --data paper_ICS.json
