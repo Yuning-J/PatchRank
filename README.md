@@ -14,7 +14,7 @@
   <br />
   
   <h3 align="center"> PatchRank: Multi-Level Explainable Vulnerability Patch Ranking</h3>
-  <p align="center">
+  <p align="left">
    This project presents a comprehensive framework for risk aggregation and vulnerability prioritization tailored for complex systems, such as industrial control systems (ICS), IoT environments, and enterprise networks. Our method employs a graph-based approach to model system dependencies and attack paths, enabling a multi-level analysis that captures both asset and component-level risks. If you use this tool in your academic work, you can find the citation in the end.
  
   </p>
