@@ -10,7 +10,6 @@
   <!-- Badges -->
   <img src="https://img.shields.io/github/repo-size/Yuning-J/PatchRank?style=for-the-badge" alt="GitHub repo size" height="25">
   <img src="https://img.shields.io/github/last-commit/Yuning-J/PatchRank?style=for-the-badge" alt="GitHub last commit" height="25">
-  <img src="https://img.shields.io/github/license/Yuning-J/PatchRank?style=for-the-badge" alt="License" height="25">
   <br />
   
   <h3 align="center"> PatchRank: Multi-Level Explainable Vulnerability Patch Ranking</h3>
