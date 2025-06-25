@@ -20,6 +20,19 @@
   </p>
 </p>
 
+## Cite
+
+If you use this tool in your academic work, you can cite it using
+
+```bibtex
+@article{jiang2025vulrg,
+  title={VulRG: Multi-Level Explainable Vulnerability Patch Ranking for Complex Systems Using Graphs},
+  author={Jiang, Yuning and Oo, Nay and Meng, Qiaoran and Lim, Hoon Wei and Sikdar, Biplab},
+  journal={arXiv preprint arXiv:2502.11143},
+  year={2025}
+}
+```
+
 ## Getting Started:
 
 - Setup Instructions: Clone the project; Create a virtual environment, also change the absolute path in the conf.py file; Install requirements using `pip`:
