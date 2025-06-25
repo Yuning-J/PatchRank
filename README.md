@@ -15,7 +15,7 @@
   
   <h3 align="center"> PatchRank: Multi-Level Explainable Vulnerability Patch Ranking</h3>
   <p align="center">
-   This project presents a comprehensive framework for risk aggregation and vulnerability prioritization tailored for complex systems, such as industrial control systems (ICS), IoT environments, and enterprise networks. Our method employs a graph-based approach to model system dependencies and attack paths, enabling a multi-level analysis that captures both asset and component-level risks.
+   This project presents a comprehensive framework for risk aggregation and vulnerability prioritization tailored for complex systems, such as industrial control systems (ICS), IoT environments, and enterprise networks. Our method employs a graph-based approach to model system dependencies and attack paths, enabling a multi-level analysis that captures both asset and component-level risks. If you use this tool in your academic work, you can find the citation in the end.
  
   </p>
 </p>
@@ -33,14 +33,13 @@ If you use this tool in your academic work, you can cite it using
 }
 ```
 
-## Getting Started:
+## Usage Guide:
 
 - Setup Instructions: Clone the project; Create a virtual environment, also change the absolute path in the conf.py file; Install requirements using `pip`:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage Guide: 
 Use main.py to compute asset-level or system-wide risk aggregation and vulnerability ranking. The user can customize the analysis by specifying the level of aggregation, the input data file, and whether to rank vulnerabilities based solely on CVSS base scores.
 
 **DEMO**
