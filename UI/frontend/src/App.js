@@ -7,7 +7,7 @@ import './App.css';
 import VulnerabilityRankingUI from './components/VulnerabilityRankingUI';
 
 // Configuration for the API
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5001/api';
 
 function App() {
   return (
