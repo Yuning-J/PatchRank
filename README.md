@@ -19,30 +19,53 @@
   </p>
 </p>
 
-## Usage Guide:
+## Quick Start
 
-- Setup Instructions: Clone the project; Create a virtual environment, also change the absolute path in the conf.py file; Install requirements using `pip`:
+### Setup
+
 ```bash
 pip install -r requirements.txt
 ```
 
-Use main.py to compute asset-level or system-wide risk aggregation and vulnerability ranking. The user can customize the analysis by specifying the level of aggregation, the input data file, and whether to rank vulnerabilities based solely on CVSS base scores.
+### Command-Line Usage
 
-**DEMO**
+PatchRank supports comprehensive command-line analysis with enhanced methodology:
 
-Please go to the folder "UI" and check the README.md for instructions on how to install and run the demo web-app.
-
-**Example Command**
 ```bash
-python main.py --level system --data paper_ICS.json
-python main.py --level system --data paper_ES.json
-python main.py --level asset --data paper_openPLC.json
+# Enhanced asset-level analysis with graph-based risk calculation
+python src/main.py --level asset --data paper_openPLC.json
+
+# Enhanced system-level analysis using paper methodology (R_system = R_network + Σ R_host,hm)
+python src/main.py --level system --data paper_ICS.json
+
+# CVSS-only vulnerability ranking (no sophisticated risk calculation)
+python src/main.py --level asset --data paper_openPLC.json --cvss_only
 ```
 
-**Command-line arguments**
-- --level: (Required) Specify the analysis level: asset (default) or system.
-- --data: (Required) Filename of the data to be processed. The data file must be located in the conf.asset_vul_data_path.
-- --cvss_only: (Optional) Include this flag to rank vulnerabilities based only on CVSS base scores.
+**Input Files:**
+- Asset-level files: `data/asset_withVul_data/` (e.g., `paper_openPLC.json`)
+- System-level files: `data/asset_withVul_data/` (e.g., `paper_ICS.json`, `paper_ES.json`)
+- Results include risk scores, vulnerability statistics, and prioritized patch recommendations
+
+### Web Interface Demo
+
+PatchRank includes a complete web interface for interactive analysis:
+
+```bash
+# Start the API server
+cd UI && python API.py
+
+# In another terminal, start the React frontend
+cd UI/frontend && npm install && npm start
+```
+
+Then navigate to `http://localhost:3000` for the full web interface with:
+- Interactive vulnerability analysis
+- Real-time patch prioritization
+- Shows actual risk reduction values, not just CVSS scores
+- Full support for complex multi-asset systems
+
+For detailed setup instructions, see `UI/README.md`.
 
 ## Cite
 
@@ -70,28 +93,11 @@ The expected outcome for asset risk calculation and TOP-3 vulnerability ranking 
   
 ```bash
 Initial Asset Risk: 2.8561
-Initial Component Risks: [0.8539847731590271, 1.0191421508789062, 0.9118924736976624, 0.0, 0.0]
 
-CVE-2016-5325 —> patched asset risk is 1.333
-—> Scope changed is True and utilized Ransomware is 0
-—> CVSS is 6.1, with likelihood as 2.8 and impact as 2.7
-—> EPSS score is 0.00437
-—> existing exploit is 0
-—> exists in Component 3
-
-CVE-2014-0160 —> patched asset risk is 1.687
-—> Scope changed is False and utilized Ransomware is 0
-—> CVSS is 7.5, with likelihood as 3.9 and impact as 3.6
-—> EPSS score is 0.97354
-—> existing exploit is 1
-—> exists in Component 2
-
-CVE-2018-0734 —> patched asset risk is 2.758
-—> Scope changed is False and utilized Ransomware is 0
-—> CVSS is 5.9, with likelihood as 2.2 and impact as 3.6
-—> EPSS score is 0.00342
-—> existing exploit is 0
-—> exists in Component 1
+Top 3 patches:
+1. CVE: CVE-2016-5325, Risk Reduction: 1.523, New Risk: 1.333
+2. CVE: CVE-2014-0160, Risk Reduction: 1.169, New Risk: 1.687  
+3. CVE: CVE-2018-0734, Risk Reduction: 0.098, New Risk: 2.758
 ```
 
 Compared with the vulnerability ranking purely based on CVSS base-scores:
