@@ -49,6 +49,8 @@ python src/main.py --level asset --data paper_openPLC.json --cvss_only
 
 ### Web Interface Demo
 
+https://github.com/Yuning-J/PatchRank/blob/main/figs/demo_patchRank.mp4
+
 PatchRank includes a complete web interface for interactive analysis:
 
 ```bash
