@@ -38,31 +38,34 @@ class PatchPrioritizer:
         """
         # Calculate initial risk if not provided
         if initial_risk is None:
-            if analysis_level == AnalysisLevel.ASSET:
-                if not isinstance(data, Asset):
-                    raise ValueError("Asset-level analysis requires Asset object")
-                # For asset level, calculate_asset_risk returns float when no data_obj provided
-                initial_risk = self.risk_calculator.calculate_asset_risk(data)
-                # Ensure we get a float value
-                if not isinstance(initial_risk, float):
-                    initial_risk = float(initial_risk)
-            else:
+            if analysis_level == AnalysisLevel.SYSTEM:
                 if not isinstance(data, System):
                     raise ValueError("System-level analysis requires System object")
-                # For system level, we need additional parameters
+                
+                # IMPROVEMENT: Ensure proper preparation and parameter passing
                 main_graph = kwargs.get('main_graph')
                 comp_centrality_data = kwargs.get('comp_centrality_data', {})
+                
                 if main_graph is not None:
+                    # Pass graph_processor to system risk calculation for proper preparation
                     initial_risk = self.risk_calculator.calculate_system_risk(
-                        main_graph, data, comp_centrality_data
+                        main_graph, data, comp_centrality_data, 
+                        graph_processor=self.graph_processor
                     )
                 else:
-                    # Fallback: sum of asset risks
-                    initial_risk = 0.0
-                    for asset in data.assets:
-                        risk_result = self.risk_calculator.calculate_asset_risk(asset)
-                        asset_risk = risk_result if isinstance(risk_result, float) else risk_result[3]
-                        initial_risk += asset_risk
+                    # Ensure assets are prepared even without main_graph
+                    self.risk_calculator.prepare_assets_for_system_calculation(data, self.graph_processor)
+                    initial_risk = sum(asset.total_propagated_risk for asset in data.assets)
+            else:
+                # Asset-level initial risk calculation
+                if not isinstance(data, Asset):
+                    raise ValueError("Asset-level analysis requires Asset object")
+                risk_result = self.risk_calculator.calculate_asset_risk(data)
+                # Handle both float and tuple returns
+                if isinstance(risk_result, tuple):
+                    initial_risk = float(risk_result[3])  # total_propagated_risk
+                else:
+                    initial_risk = float(risk_result)
         
         # Get patch rankings based on analysis level
         if analysis_level == AnalysisLevel.ASSET:
@@ -286,17 +289,14 @@ class PatchPrioritizer:
 
     def _rank_system_patches_with_real_reduction(self, data: System, initial_risk: float, **kwargs) -> List[Dict[str, Any]]:
         """
-        Improved system patch ranking with real risk reduction calculation
-        
-        Args:
-            data: System object
-            initial_risk: Initial system risk
-            **kwargs: Additional arguments
-            
-        Returns:
-            List of patch information dictionaries with real risk reduction
+        Improved system patch ranking with real system risk reduction calculation
+        Uses the enhanced system risk calculation instead of simple asset risk summation
         """
         patches = []
+        
+        # Get system-level parameters
+        main_graph = kwargs.get('main_graph')
+        comp_centrality_data = kwargs.get('comp_centrality_data', {})
         
         for asset in data.assets:
             for component in asset.components:
@@ -316,51 +316,132 @@ class PatchPrioritizer:
                                     break
                             break
                     
-                    # Calculate risk for the patched system
+                    # Calculate risk for the patched system using proper system risk calculation
                     try:
-                        # Recalculate asset risks for the patched system
-                        total_patched_risk = 0.0
-                        for patched_asset in patched_system.assets:
-                            asset_risk = self.risk_calculator.calculate_asset_risk(patched_asset)
-                            if isinstance(asset_risk, float):
-                                total_patched_risk += asset_risk
+                        if main_graph is not None:
+                            # Use full system risk calculation
+                            total_patched_risk = self.risk_calculator.calculate_system_risk(
+                                main_graph, patched_system, comp_centrality_data,
+                                graph_processor=self.graph_processor
+                            )
+                        else:
+                            # Fallback: prepare assets and sum propagated risks
+                            self.risk_calculator.prepare_assets_for_system_calculation(
+                                patched_system, self.graph_processor
+                            )
+                            total_patched_risk = sum(asset.total_propagated_risk for asset in patched_system.assets)
                         
                         # Calculate actual risk reduction
                         risk_reduction = max(0.0, initial_risk - total_patched_risk)
                         
-                    except Exception:
-                        # Fallback to CVSS-based calculation if risk calculation fails
+                    except Exception as e:
+                        print(f"Warning: System risk calculation failed for {vulnerability.cve_id}: {e}")
+                        # Fallback to CVSS-based calculation
                         risk_reduction = vulnerability.cvss * asset.criticality_level / 5.0 * 0.1
                         total_patched_risk = max(0.0, initial_risk - risk_reduction)
                     
-                    # Boost score for exploitable vulnerabilities
-                    if vulnerability.exploit:
-                        risk_reduction *= 1.2
-                    
-                    # Boost score based on EPSS and asset criticality
-                    if vulnerability.epss > 0.5:
-                        risk_reduction *= (1.0 + vulnerability.epss * 0.3)
-                    
-                    # Factor in asset criticality
-                    risk_reduction *= (asset.criticality_level / 5.0)
-                    
+                    # Create patch information
                     patch_info = {
                         'cve_id': vulnerability.cve_id,
-                        'component_id': component.id,
                         'asset_id': asset.asset_id,
-                        'priority_score': risk_reduction,  # Real risk reduction
-                        'cvss': vulnerability.cvss,
-                        'exploit': vulnerability.exploit,
-                        'epss': vulnerability.epss,
-                        'patched_risk': total_patched_risk
+                        'component_id': component.id,
+                        'component_name': component.name,
+                        'risk_reduction': risk_reduction,
+                        'cvss_score': vulnerability.cvss,
+                        'epss_score': vulnerability.epss,
+                        'has_exploit': vulnerability.exploit,
+                        'is_ransomware': vulnerability.ransomware,
+                        'patched_system_risk': total_patched_risk,
+                        'calculation_method': 'system_risk' if main_graph is not None else 'asset_sum'
                     }
                     
+                    # Apply boosting factors (same as before)
+                    boosted_score = risk_reduction
+                    
+                    # 1. Exploit availability boost
+                    if vulnerability.exploit:
+                        boosted_score *= 1.5
+                        patch_info['exploit_boost'] = 1.5
+                    
+                    # 2. EPSS boost
+                    if vulnerability.epss > 0.1:
+                        boosted_score *= (1.0 + vulnerability.epss * 0.5)
+                        patch_info['epss_boost'] = 1.0 + vulnerability.epss * 0.5
+                    
+                    # 3. Ransomware boost
+                    if vulnerability.ransomware:
+                        boosted_score *= 2.0
+                        patch_info['ransomware_boost'] = 2.0
+                    
+                    # 4. Critical asset boost
+                    if asset.criticality_level >= 4:
+                        boosted_score *= 1.3
+                        patch_info['critical_asset_boost'] = 1.3
+                    
+                    # 5. High CVSS boost
+                    if vulnerability.cvss >= 7.0:
+                        boosted_score *= 1.2
+                        patch_info['high_cvss_boost'] = 1.2
+                    
+                    patch_info['final_score'] = boosted_score
                     patches.append(patch_info)
         
-        # Sort by risk reduction (highest first)
-        patches.sort(key=lambda x: x['priority_score'], reverse=True)
+        # Sort by boosted score (highest first)
+        patches.sort(key=lambda x: x['final_score'], reverse=True)
         
         return patches
+    
+    def verify_system_risk_calculation(self, data: System, **kwargs) -> Dict[str, Any]:
+        """
+        Verify and debug system risk calculation
+        
+        Args:
+            data: System object
+            **kwargs: Additional parameters (main_graph, comp_centrality_data)
+            
+        Returns:
+            Dictionary with debugging information
+        """
+        main_graph = kwargs.get('main_graph')
+        comp_centrality_data = kwargs.get('comp_centrality_data', {})
+        
+        # Calculate system risk with debugging
+        system_risk = self.risk_calculator.calculate_system_risk(
+            main_graph, data, comp_centrality_data, 
+            graph_processor=self.graph_processor
+        )
+        
+        # Calculate individual asset risks for comparison
+        asset_risks = []
+        total_simple_risk = 0.0
+        
+        for asset in data.assets:
+            asset_risk_result = self.risk_calculator.calculate_asset_risk(asset)
+            # Handle tuple returns
+            if isinstance(asset_risk_result, tuple):
+                asset_risk = asset_risk_result[3]  # total_propagated_risk
+            else:
+                asset_risk = asset_risk_result
+            
+            asset_risks.append({
+                'asset_id': asset.asset_id,
+                'simple_risk': asset_risk,
+                'total_propagated_risk': getattr(asset, 'total_propagated_risk', 0.0),
+                'updated_criticality': getattr(asset, 'updated_criticality', 0.0),
+                'final_criticality': getattr(asset, 'final_criticality', 0.0)
+            })
+            total_simple_risk += asset_risk
+        
+        return {
+            'system_risk': system_risk,
+            'simple_sum_risk': total_simple_risk,
+            'ratio': system_risk / total_simple_risk if total_simple_risk > 0 else 0,
+            'asset_risks': asset_risks,
+            'has_network_graph': main_graph is not None and len(main_graph.edges()) > 0 if main_graph else False,
+            'component_centrality_count': len(comp_centrality_data),
+            'num_assets': len(data.assets),
+            'total_vulnerabilities': sum(len(asset.get_all_vulnerabilities()) for asset in data.assets)
+        }
 
     def rank_vulnerabilities_by_cvss(self, data: Union[Asset, System], 
                                    level: AnalysisLevel = AnalysisLevel.ASSET) -> List[Dict[str, Any]]:

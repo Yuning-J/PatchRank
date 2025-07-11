@@ -501,17 +501,89 @@ class RiskCalculator:
         
         return total_propagated_risks
     
-    def calculate_system_risk(self, G: nx.DiGraph, data: System, 
-                            component_centrality: Dict[str, float], 
-                            criticality_threshold: int = 6) -> float:
+    def prepare_assets_for_system_calculation(self, data: System, graph_processor=None) -> None:
         """
-        Calculate system-level risk using a simple, logical approach
+        Prepare assets with required data for system risk calculation
         
         Args:
-            G: Network communication graph (optional)
             data: System object
-            component_centrality: Component centrality data (optional)
-            criticality_threshold: Threshold for critical assets
+            graph_processor: GraphProcessor instance (optional)
+        """
+        if graph_processor is None:
+            from .graph_processor import GraphProcessor
+            graph_processor = GraphProcessor()
+        
+        print(f"Preparing {len(data.assets)} assets for system calculation...")
+        
+        # Step 1: Calculate individual asset risks and store total_propagated_risk
+        for asset in data.assets:
+            try:
+                # Generate sub-graph and calculate detailed risk
+                G, data_obj = graph_processor.generate_sub_graph(asset)
+                
+                # Calculate asset risk with data_obj (returns tuple)
+                risk_result = self.calculate_asset_risk(asset, data_obj)
+                
+                if isinstance(risk_result, tuple) and len(risk_result) >= 4:
+                    # Extract total_propagated_risk from tuple
+                    total_propagated_risk = risk_result[3]
+                    asset.total_propagated_risk = total_propagated_risk
+                    print(f"  Asset {asset.asset_id}: total_propagated_risk = {total_propagated_risk:.3f}")
+                else:
+                    # Fallback: use single value
+                    asset.total_propagated_risk = float(risk_result)
+                    print(f"  Asset {asset.asset_id}: total_propagated_risk = {risk_result:.3f} (fallback)")
+                    
+            except Exception as e:
+                print(f"  Warning: Could not calculate detailed risk for asset {asset.asset_id}: {e}")
+                # Fallback to simple calculation
+                try:
+                    simple_risk = self.calculate_asset_risk(asset)
+                    asset.total_propagated_risk = simple_risk
+                    print(f"  Asset {asset.asset_id}: total_propagated_risk = {simple_risk:.3f} (simple fallback)")
+                except Exception as e2:
+                    print(f"  Error: Could not calculate any risk for asset {asset.asset_id}: {e2}")
+                    asset.total_propagated_risk = 0.0
+        
+        # Step 2: Calculate asset criticalities
+        try:
+            # Try to generate centrality data
+            from .dependency_calculator import DependencyCalculator
+            dep_calc = DependencyCalculator('data/asset_data')
+            centrality_data = dep_calc.generate_dependence(data, 'ICS')
+            
+            # Calculate updated criticalities
+            asset_centrality = centrality_data['asset_centrality']
+            updated_criticality, final_criticality = self.recalculate_asset_criticality(data.assets, asset_centrality)
+            
+            # Store on assets
+            for asset in data.assets:
+                asset_id = str(asset.asset_id)
+                asset.updated_criticality = updated_criticality.get(asset_id, 0.5)
+                asset.final_criticality = final_criticality.get(asset_id, asset.criticality_level)
+                print(f"  Asset {asset.asset_id}: updated_criticality={asset.updated_criticality:.3f}, final_criticality={asset.final_criticality}")
+                
+        except Exception as e:
+            print(f"  Warning: Could not calculate centrality-based criticalities: {e}")
+            # Fallback: use normalized business criticality
+            for asset in data.assets:
+                asset.updated_criticality = self.normalize_business_criticality(asset.criticality_level)
+                asset.final_criticality = asset.criticality_level  # Use business criticality as final
+                print(f"  Asset {asset.asset_id}: updated_criticality={asset.updated_criticality:.3f} (normalized), final_criticality={asset.final_criticality}")
+
+    def calculate_system_risk(self, G: nx.DiGraph, data: System, 
+                            component_centrality: Dict[str, float], 
+                            criticality_threshold: int = 6,
+                            graph_processor=None) -> float:
+        """
+        Calculate system-level risk following the paper's Equation 13: R_system = R_network + Σ R_host,hm
+        
+        Args:
+            G: Network communication graph
+            data: System object
+            component_centrality: Component centrality data
+            criticality_threshold: Threshold for critical assets (default 6 as per paper)
+            graph_processor: GraphProcessor instance (optional, will be created if needed)
             
         Returns:
             System-level risk score
@@ -519,79 +591,90 @@ class RiskCalculator:
         if not data.assets:
             return 0.0
         
-        # Method 1: Try sophisticated network-based calculation if we have good data
-        has_network_graph = G is not None and len(G.edges()) > 0
-        max_centrality = max(component_centrality.values()) if component_centrality else 0.0
-        has_meaningful_centrality = max_centrality > 0.01
+        # Ensure assets have required data
+        assets_prepared = all(
+            hasattr(asset, 'total_propagated_risk') and 
+            hasattr(asset, 'updated_criticality') and 
+            hasattr(asset, 'final_criticality') and
+            asset.total_propagated_risk > 0
+            for asset in data.assets
+        )
         
-        if has_network_graph and has_meaningful_centrality:
-            try:
-                # Use a reasonable criticality threshold
-                effective_threshold = min(criticality_threshold, 3)  # Don't set threshold too high
-                critical_assets = [
-                    asset for asset in data.assets 
-                    if asset.final_criticality >= effective_threshold
-                ]
-                
-                # If no critical assets, take top half
-                if not critical_assets:
-                    sorted_assets = sorted(data.assets, key=lambda a: a.final_criticality, reverse=True)
-                    num_critical = max(1, len(sorted_assets) // 2)
-                    critical_assets = sorted_assets[:num_critical]
-                
-                # Calculate network-based risk
-                network_risk = 0.0
-                if critical_assets:
-                    shortest_paths = self._calculate_shortest_paths(G, critical_assets)
-                    for path in shortest_paths.values():
-                        path_risk = self._calculate_network_risk(path, data, component_centrality)
-                        network_risk += path_risk
-                
-                # Calculate host-based risk (simple sum with light criticality weighting)
-                host_risk = 0.0
-                for asset in data.assets:
-                    # Light criticality weighting: 0.8-1.2 range instead of extreme scaling
-                    criticality_factor = 0.8 + (asset.criticality_level - 1) * 0.1  # 0.8-1.2 range
-                    weighted_risk = asset.total_propagated_risk * criticality_factor
-                    host_risk += weighted_risk
-                
-                # Simple combination with light network effect
-                system_risk = host_risk + (network_risk * 0.3)  # Light network contribution
-                
-                # Apply modest system effect (10-30% increase, not 300%!)
-                system_multiplier = 1.0 + (len(data.assets) - 1) * 0.05  # 5% per additional asset
-                final_risk = system_risk * min(system_multiplier, 1.3)  # Cap at 30% increase
-                
-                return final_risk
-                
-            except Exception as e:
-                print(f"Network-based calculation failed: {e}")
+        if not assets_prepared:
+            print("Assets not prepared - running preparation step...")
+            self.prepare_assets_for_system_calculation(data, graph_processor)
         
-        # Method 2: Simple weighted sum approach (much more reasonable)
-        total_weighted_risk = 0.0
-        total_weight = 0.0
+        # Step 1: Calculate host-based risk (Equation 14: Σ R_host,hm)
+        # R_host,hm = asset_criticality × total_propagated_risk
+        host_risk = 0.0
+        included_assets = set()
         
         for asset in data.assets:
-            # Simple criticality weighting (0.6-1.0 range)
-            criticality_weight = 0.6 + (asset.criticality_level - 1) * 0.1  # 0.6-1.0 range
-            
-            # Weight the asset risk by criticality
-            weighted_risk = asset.total_propagated_risk * criticality_weight
-            
-            total_weighted_risk += weighted_risk
-            total_weight += criticality_weight
+            if asset.ip_address not in included_assets:
+                # Use normalized criticality values (0-1 range) not raw values (1-5)
+                if hasattr(asset, 'updated_criticality') and asset.updated_criticality > 0:
+                    # Use the properly calculated updated_criticality from centrality analysis
+                    asset_criticality = float(asset.updated_criticality)
+                else:
+                    # Fallback: normalize the business criticality level
+                    asset_criticality = self.normalize_business_criticality(asset.criticality_level)
+                
+                asset_host_risk = asset_criticality * asset.total_propagated_risk
+                host_risk += asset_host_risk
+                included_assets.add(asset.ip_address)
         
-        # Normalize by weight to get average, then scale by system size
-        if total_weight > 0:
-            avg_weighted_risk = total_weighted_risk / total_weight
-            # Modest system complexity factor: 1.1-1.5x based on system size
-            system_complexity = 1.0 + (len(data.assets) - 1) * 0.07  # 7% per additional asset
-            system_risk = avg_weighted_risk * len(data.assets) * min(system_complexity, 1.5)
-            return system_risk
+        # Step 2: Calculate network-based risk (Equation 15)
+        # Only if we have a meaningful network graph
+        network_risk = 0.0
         
-        # Method 3: Fallback to simple sum with slight increase for system effects
-        simple_sum = sum(asset.total_propagated_risk for asset in data.assets)
-        return simple_sum * 1.2  # Just 20% increase for system interactions
+        if G is not None and len(G.edges()) > 0:
+            try:
+                # Identify critical assets (criticality >= threshold)
+                critical_assets = self._identify_critical_assets(data, criticality_threshold)
+                
+                # If no critical assets with default threshold, try lower threshold
+                if not critical_assets and criticality_threshold > 3:
+                    critical_assets = self._identify_critical_assets(data, 3)
+                
+                # Calculate shortest paths to critical assets
+                if critical_assets:
+                    shortest_paths = self._calculate_shortest_paths(G, critical_assets)
+                    
+                    # Calculate network risk along paths
+                    for (src_ip, dst_ip), path in shortest_paths.items():
+                        path_risk = self._calculate_network_risk(path, data, component_centrality)
+                        network_risk += path_risk
+                        
+            except Exception as e:
+                print(f"Warning: Network risk calculation failed: {e}")
+                network_risk = 0.0
+        
+        # Step 3: Combine per Equation 13
+        system_risk = host_risk + network_risk
+        
+        return system_risk
+    
+    def _identify_critical_assets(self, data: System, criticality_threshold: int = 6) -> List[Asset]:
+        """
+        Identify critical assets with criticality >= threshold (following paper's methodology)
+        
+        Args:
+            data: System object
+            criticality_threshold: Minimum criticality level for critical assets
+            
+        Returns:
+            List of critical assets
+        """
+        critical_assets = []
+        
+        for asset in data.assets:
+            # Use final_criticality if available, otherwise use criticality_level
+            asset_criticality = getattr(asset, 'final_criticality', asset.criticality_level)
+            
+            if asset_criticality >= criticality_threshold:
+                critical_assets.append(asset)
+                
+        return critical_assets
     
     def _calculate_shortest_paths(self, main_graph: nx.DiGraph, 
                                 critical_assets: List[Asset]) -> Dict[Tuple[str, str], List[str]]:
@@ -635,42 +718,98 @@ class RiskCalculator:
     
     def _calculate_network_risk(self, path: List[str], data: System, 
                               component_centrality: Dict[str, float]) -> float:
-        """Calculate network risk for a specific path"""
+        """
+        Calculate network risk following paper's methodology (Equation 15)
+        Only considers network-exploitable vulnerabilities along the path
+        
+        Args:
+            path: List of IP addresses representing the attack path
+            data: System object containing assets
+            component_centrality: Component centrality data
+            
+        Returns:
+            Network risk value for this path
+        """
         path_risk = 0.0
         
-        for i in range(len(path) - 1):
-            current_ip = path[i]
-            next_ip = path[i + 1]
-            
-            # Find assets involved in this path segment
-            current_asset = next((a for a in data.assets if a.ip_address == current_ip), None)
-            next_asset = next((a for a in data.assets if a.ip_address == next_ip), None)
-            
-            if current_asset and next_asset:
-                # Calculate risk based on asset criticality and centrality
-                current_criticality = float(current_asset.updated_criticality)
-                next_criticality = float(next_asset.updated_criticality)
+        for ip in path:
+            # Find asset at this IP address
+            asset = next((a for a in data.assets if a.ip_address == ip), None)
+            if not asset:
+                continue
                 
-                # Use component centrality if available
-                current_centrality = max(
-                    component_centrality.get(f"A{current_asset.asset_id}_{comp.name}", 0)
-                    for comp in current_asset.components
-                ) if current_asset.components else 0
+            # Only consider network-exploitable vulnerabilities (KEY DIFFERENCE from host risk)
+            for component in asset.components:
+                component_name = f"A{asset.asset_id}_{component.name}"
+                component_centrality_value = component_centrality.get(component_name, 0.0)
                 
-                next_centrality = max(
-                    component_centrality.get(f"A{next_asset.asset_id}_{comp.name}", 0)
-                    for comp in next_asset.components
-                ) if next_asset.components else 0
-                
-                # Calculate segment risk
-                segment_risk = (
-                    current_criticality * current_centrality +
-                    next_criticality * next_centrality
-                ) / 2
-                
-                path_risk += segment_risk
+                for vulnerability in component.vulnerabilities:
+                    # Check if vulnerability is network-based (AV:N or AV:A)
+                    if self._is_network_vulnerability(vulnerability):
+                        exploit_likelihood = self.calculate_exploit_likelihood(vulnerability)
+                        # Calculate risk contribution: likelihood × impact × centrality
+                        risk_contribution = (exploit_likelihood * 
+                                           vulnerability.impact / 10.0 * 
+                                           component_centrality_value)
+                        path_risk += risk_contribution
         
         return path_risk
+    
+    def _is_network_vulnerability(self, vulnerability: Vulnerability) -> bool:
+        """
+        Check if vulnerability is network-exploitable based on CVSS Attack Vector
+        
+        Args:
+            vulnerability: Vulnerability object
+            
+        Returns:
+            True if vulnerability is network-exploitable (AV:N or AV:A)
+        """
+        if hasattr(vulnerability, 'cvss_v3_vector') and vulnerability.cvss_v3_vector:
+            # Check CVSS v3 vector for Attack Vector
+            cvss_vector = vulnerability.cvss_v3_vector
+            if "/AV:N" in cvss_vector:  # Network
+                return True
+            elif "/AV:A" in cvss_vector:  # Adjacent Network
+                return True
+            elif "/AV:L" in cvss_vector:  # Local
+                return False
+            elif "/AV:P" in cvss_vector:  # Physical
+                return False
+        
+        # Fallback: if no CVSS vector available, assume network-based
+        # This is conservative but ensures we don't miss network risks
+        return True
+    
+    def _calculate_simple_asset_centrality(self, data: System) -> Dict[str, float]:
+        """
+        Calculate simple asset centrality when dependency calculator is not available
+        
+        Args:
+            data: System object
+            
+        Returns:
+            Dictionary mapping asset IDs to centrality values
+        """
+        asset_centrality = {}
+        
+        if not data.assets:
+            return asset_centrality
+        
+        # Simple heuristic: assets with more components and higher criticality have higher centrality
+        max_components = max(len(asset.components) for asset in data.assets)
+        max_criticality = max(asset.criticality_level for asset in data.assets)
+        
+        for asset in data.assets:
+            # Normalize based on component count and criticality
+            component_factor = len(asset.components) / max_components if max_components > 0 else 0.5
+            criticality_factor = asset.criticality_level / max_criticality if max_criticality > 0 else 0.5
+            
+            # Combined centrality (weighted average)
+            centrality = (component_factor * 0.4 + criticality_factor * 0.6)  # Emphasize criticality
+            asset_centrality[str(asset.asset_id)] = centrality
+        
+        return asset_centrality
     
     def recalculate_asset_criticality(self, assets: List[Asset], 
                                     centrality_data: Dict[str, float]) -> Tuple[Dict[str, float], Dict[str, int]]:
