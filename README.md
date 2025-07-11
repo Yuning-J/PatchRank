@@ -49,7 +49,7 @@ python src/main.py --level asset --data paper_openPLC.json --cvss_only
 
 ### Web Interface Demo
 
-<video width="100%" controls>
+<video width="800" controls>
   <source src="figs/demo_patchRank.mp4" type="video/mp4">
 </video>
 
