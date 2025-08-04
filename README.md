@@ -71,18 +71,6 @@ Then navigate to `http://localhost:3000` for the full web interface with:
 
 For detailed setup instructions, see `UI/README.md`.
 
-## Cite
-
-If you use this tool in your academic work, you can cite it using
-
-```bibtex
-@article{jiang2025vulrg,
-  title={VulRG: Multi-Level Explainable Vulnerability Patch Ranking for Complex Systems Using Graphs},
-  author={Jiang, Yuning and Oo, Nay and Meng, Qiaoran and Lim, Hoon Wei and Sikdar, Biplab},
-  journal={arXiv preprint arXiv:2502.11143},
-  year={2025}
-}
-```
 
 ## Application Scenario:
 
@@ -127,3 +115,7 @@ VulRG generates vulnerability ranking for the system. Here is an example of vuln
 <p align="center">
 <img src="https://github.com/Yuning-J/VulRG/blob/main/figs/SysVulRank.png" alt="System" width="770px">
 </p>
+
+## More Details
+
+You can find more details on this work in the following paper: [VulRG: Multi-Level Explainable Vulnerability Patch Ranking for Complex Systems Using Graphs](https://arxiv.org/abs/2502.11143) 
