@@ -1,0 +1,29 @@
+ids_detection_rates:
+  high: 0.9      # Advanced IDS with ML/behavioral analysis
+  medium: 0.7    # Standard signature-based IDS
+  low: 0.4       # Basic pattern matching
+  none: 0.0      # No IDS deployed
+
+segmentation_effectiveness:
+  micro: 0.8     # Micro-segmentation with zero-trust
+  macro: 0.6     # Network-level segmentation
+  vlan: 0.4      # VLAN-based segmentation
+  none: 0.0      # Flat network
+
+waf_protection:
+  application: 0.8  # Application-aware WAF
+  network: 0.6      # Network-level filtering
+  basic: 0.3        # Basic packet filtering
+  none: 0.0         # No WAF
+
+zero_trust_coverage:
+  full: 0.9      # Complete ZTA implementation
+  partial: 0.6   # Limited ZTA (critical assets only)
+  limited: 0.3   # Basic identity verification
+  none: 0.0      # Traditional perimeter security
+
+default_weights:
+  ids: 0.3
+  segmentation: 0.3
+  waf: 0.2
+  zero_trust: 0.2

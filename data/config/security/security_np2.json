@@ -1,0 +1,78 @@
+{
+  "security_zones": [
+    {
+      "name": "internet",
+      "trust_level": 1,
+      "asset_criteria": {
+        "ip_range": "0.0.0"
+      }
+    },
+    {
+      "name": "dmz",
+      "trust_level": 3,
+      "asset_criteria": {
+        "criticality_range": [1, 2]
+      }
+    },
+    {
+      "name": "internal",
+      "trust_level": 5,
+      "asset_criteria": {
+        "criticality_range": [3, 4]
+      }
+    },
+    {
+      "name": "critical",
+      "trust_level": 8,
+      "asset_criteria": {
+        "criticality_range": [5, 6]
+      }
+    }
+  ],
+  "security_policies": [
+    {
+      "source": "dmz",
+      "destination": "critical",
+      "action": "restrict",
+      "probability_factor": 0.3,
+      "conditions": {
+        "description": "DMZ to critical zone access restricted"
+      }
+    },
+    {
+      "source": "internet",
+      "destination": "critical",
+      "action": "restrict",
+      "probability_factor": 0.1,
+      "conditions": {
+        "description": "Internet to critical zone heavily restricted"
+      }
+    },
+    {
+      "source": "internal",
+      "destination": "critical",
+      "action": "allow",
+      "probability_factor": 1.0,
+      "conditions": {
+        "description": "Internal to critical zone allowed"
+      }
+    },
+    {
+      "source": "dmz",
+      "destination": "internal",
+      "action": "restrict",
+      "probability_factor": 0.5,
+      "conditions": {
+        "description": "DMZ to internal zone moderately restricted"
+      }
+    }
+  ],
+  "connection_rules": [
+    {
+      "source": "192.168.1.11",
+      "destination": "192.168.3.20",
+      "factor": 0.0,
+      "description": "VPN to DC connection blocked in NP2"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+# PatchRank Configuration File
+# This file configures the δ and θ parameters for Equation 10 and other system settings
+
+# Exploit Score Configuration (Equation 7)
+# η1: Weight for known exploit probability
+# η2: Weight for predicted exploit probability  
+# η3: Weight for zero-day likelihood
+exploit_score:
+  eta1: 0.5  # Known exploit probability weight
+  eta2: 0.3  # Predicted exploit probability weight
+  eta3: 0.2  # Zero-day likelihood weight
+
+# Risk Calculation Configuration
+# δ: Weight for scope change (network posture) - Equation 10
+# θ: Weight for ransomware (attack pattern history) - Equation 10
+# α: Weight for CVSS likelihood (legacy)
+# β: Weight for EPSS (legacy)
+# γ: Weight for exploit availability (legacy)
+risk_calculation:
+  delta: 0.6      # δ - Network posture weight (increased for high-security networks)
+  theta: 0.4      # θ - Attack pattern history weight
+  alpha: 0.3      # α - CVSS likelihood weight (legacy)
+  beta: 0.4       # β - EPSS weight (legacy)
+  gamma: 0.3      # γ - Exploit availability weight (legacy)
+  k_shortest_paths: 3  # Number of shortest paths for network risk calculation
+  
+  # Asset Criticality Weights (Definition 9)
+  criticality_weights:
+    w1: 0.6       # Centrality weight
+    w2: 0.4       # Business criticality weight
+  
+  # Business Criticality Levels (Table in Definition 11)
+  business_criticality_mapping:
+    1: 0.167  # External/public non-critical
+    2: 0.333  # Internet-facing
+    3: 0.500  # Internal non-critical
+    4: 0.667  # Internal business-sensitive
+    5: 0.833  # Internal business-critical
+    6: 1.000  # Internal mission-critical
+  
+  # System Risk Weights (Definition 12) - ADJUSTED FOR TOPOLOGY DIFFERENTIATION
+  system_risk_weights:
+    host_weight: 0.1    # Weight for host-based risk (decreased from 0.2)
+    network_weight: 0.9 # Weight for network-based risk (increased from 0.8)
+  
+  # Network Risk Calculation Parameters (CORRECTED LOGIC)
+  network_risk:
+    criticality_threshold: 5  # Threshold for identifying critical assets
+    use_path_difficulty: true  # Apply difficulty factor for longer paths
+    use_isolation_bonus: true  # Apply isolation bonus for segmented networks
+    min_path_probability: 0.01  # Minimum path probability
+    max_path_probability: 1.0   # Maximum path probability
+    scope_amplification_factor: 1.5  # κ - Scope amplification factor (increased from 0.5 to 1.5)
+    topology_amplification_factor: 2.0  # Direct connection amplification for critical paths
+    
+    # Path Probability Factors - ENHANCED FOR TOPOLOGY DIFFERENTIATION
+    path_probability:
+      base_success_rate: 0.7    # Base success rate for each hop (increased from 0.5)
+      path_length_penalty: 0.3  # Penalty for longer paths (increased from 0.1)
+      isolation_bonus: 0.4      # Bonus for network isolation (increased from 0.2)
+      direct_connection_bonus: 1.5  # Bonus multiplier for direct critical connections
+
+# Mitigation Configuration
+# Effectiveness levels for different security controls
+mitigation:
+  ids_effectiveness:
+    high: 0.9     # High-end IDS systems
+    medium: 0.7   # Standard IDS systems
+    low: 0.4      # Basic IDS systems
+    none: 0.0     # No IDS protection
+  
+  segmentation_effectiveness:
+    micro: 0.8    # Micro-segmentation (highest security)
+    macro: 0.6    # Macro-segmentation
+    vlan: 0.4     # VLAN-based segmentation
+    none: 0.0     # No network segmentation
+  
+  waf_effectiveness:
+    application: 0.8  # Application-level WAF
+    network: 0.6      # Network-level WAF
+    basic: 0.3        # Basic WAF protection
+    none: 0.0         # No WAF protection
+  
+  zero_trust_effectiveness:
+    full: 0.9     # Full zero-trust implementation
+    partial: 0.6  # Partial zero-trust implementation
+    limited: 0.3  # Limited zero-trust implementation
+    none: 0.0     # No zero-trust implementation
+
+# System Configuration
+system:
+  log_level: "INFO"                    # Logging level (DEBUG, INFO, WARNING, ERROR)
+  output_dir: "output"                 # Output directory for results
+  results_dir: "results"               # Results directory for analysis
+  max_propagation_depth: 10           # Maximum depth for risk propagation
+  enable_caching: true                 # Enable result caching for performance
+  cache_ttl: 3600                     # Cache time-to-live in seconds
+
+# Evaluation Configuration
+# Settings for vulnerability ranking evaluation and metrics calculation
+evaluation:
+  # K values for precision, recall, F1, and NDCG calculations
+  k_values: [1, 3, 5, 10, 20]        # Standard K values for evaluation
+  
+  # Statistical tests to perform
+  statistical_tests: ["wilcoxon", "friedman"]  # Wilcoxon signed-rank, Friedman test
+  
+  # Export formats for evaluation results
+  export_formats: ["json", "csv", "txt", "table"]
+  
+  # Ground truth data sources
+  ground_truth:
+    cisa_kev_enabled: true            # Enable CISA Known Exploited Vulnerabilities
+    vendor_advisories_enabled: true   # Enable vendor security advisories
+    custom_ground_truth_path: null   # Path to custom ground truth data
+  
+  # Baseline methods for comparison
+  baselines:
+    cvss_only: true                   # CVSS-based ranking baseline
+    epss_only: true                   # EPSS-based ranking baseline
+    cvss_epss_combined: true         # CVSS+EPSS combined baseline
+    illation_style: true             # ILLATION-style centrality baseline
+  
+  # Performance settings
+  performance:
+    enable_caching: true              # Cache evaluation results
+    parallel_processing: false        # Enable parallel processing for large datasets
+    max_workers: 4                    # Maximum number of parallel workers
+
+# Example configurations for different scenarios:
+
+# High-Security Network (δ=0.7, θ=0.3)
+# - Emphasizes network posture over attack history
+# - Suitable for government, financial, healthcare networks
+# high_security:
+#   risk_calculation:
+#     delta: 0.7
+#     theta: 0.3
+
+# Attack-Focused Network (δ=0.3, θ=0.7)
+# - Emphasizes attack pattern history over network posture
+# - Suitable for networks with frequent attack attempts
+# attack_focused:
+#   risk_calculation:
+#     delta: 0.3
+#     theta: 0.7
+
+# Balanced Network (δ=0.5, θ=0.5)
+# - Equal weighting for network posture and attack history
+# - Default configuration suitable for most enterprise networks
+# balanced:
+#   risk_calculation:
+#     delta: 0.5
+#     theta: 0.5
