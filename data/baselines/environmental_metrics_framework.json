@@ -1,0 +1,74 @@
+{
+  "description": "Framework for applying environmental metrics to generate CVSS B&E scores across all scenarios",
+  "legend": {
+    "CDP": "Collateral Damage Potential - Based on asset value (1-10 scale)",
+    "TD": "Target Distribution - Based on network reachability and connectivity", 
+    "CR": "Confidentiality Requirement - Based on asset criticality",
+    "IR": "Integrity Requirement - Based on asset criticality",
+    "AR": "Availability Requirement - Based on asset criticality",
+    "values": {
+      "N": "None", "L": "Low", "LM": "Low-Medium", "M": "Medium", "MH": "Medium-High", "H": "High"
+    }
+  },
+  "illation_methodology": {
+    "cdp_mapping": {
+      "asset_value_1_2": "N",
+      "asset_value_3_4": "L", 
+      "asset_value_5_6": "LM",
+      "asset_value_7_8": "MH",
+      "asset_value_9_10": "H"
+    },
+    "td_mapping": {
+      "fully_connected_reachable": "H",
+      "partially_isolated": "M", 
+      "completely_isolated": "N"
+    },
+    "network_analysis_tools": [
+      "AWS network reachability analyzer",
+      "Qualys vulnerability scanner",
+      "Network topology analysis"
+    ]
+  },
+  "asset_type_mappings": {
+    "Web_Server": {"asset_value": 7, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Database_Server": {"asset_value": 9, "CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Application_Server": {"asset_value": 8, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "DNS_Server": {"asset_value": 6, "CDP": "LM", "TD": "H", "CR": "M", "IR": "H", "AR": "H"},
+    "FTP_Server": {"asset_value": 5, "CDP": "LM", "TD": "H", "CR": "M", "IR": "M", "AR": "M"},
+    "Administrative_Server": {"asset_value": 9, "CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "User_Workstation": {"asset_value": 4, "CDP": "L", "TD": "M", "CR": "M", "IR": "M", "AR": "M"},
+    "External_Firewall": {"asset_value": 9, "CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Internal_Firewall": {"asset_value": 7, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "VPN_Server": {"asset_value": 8, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Domain_Controller": {"asset_value": 10, "CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Mail_Server": {"asset_value": 7, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "PLC": {"asset_value": 9, "CDP": "H", "TD": "H", "CR": "L", "IR": "H", "AR": "H"},
+    "HMI": {"asset_value": 8, "CDP": "MH", "TD": "H", "CR": "M", "IR": "H", "AR": "H"},
+    "Engineering_Workstation": {"asset_value": 7, "CDP": "MH", "TD": "M", "CR": "H", "IR": "H", "AR": "H"},
+    "Historian_Database": {"asset_value": 8, "CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "openssl": {"asset_value": 5, "CDP": "LM", "TD": "H", "CR": "M", "IR": "H", "AR": "M"},
+    "Node.js": {"asset_value": 4, "CDP": "L", "TD": "H", "CR": "M", "IR": "M", "AR": "M"}
+  },
+  "scenario_specific_adjustments": {
+    "scenario2_NP1_NP2": "Use environmental_metrics.json for specific asset configurations",
+    "scenario3_ICS": "ICS environments typically have higher availability requirements",
+    "scenario4_ES": "Enterprise environments vary by asset criticality and network isolation",
+    "scenario1_openPLC": "Industrial control components have high integrity/availability requirements"
+  },
+  "usage_notes": [
+    "Apply these environmental metrics to base CVSS scores to calculate CVSS B&E scores",
+    "CDP is determined by asset_value (1-10) using ILLATION mapping methodology",
+    "TD is determined by network reachability analysis - changes dynamically with network configuration",
+    "For NP1→NP2 scenarios: TD changes based on isolation (User2: H→M, WebS1: H→N)",
+    "CR/IR/AR are set based on asset criticality and organizational requirements",
+    "Use existing criticality_level field from JSON files when available",
+    "Critical infrastructure (PLC, HMI) prioritizes availability and integrity over confidentiality"
+  ],
+  "implementation_guidance": {
+    "step1": "Extract asset criticality_level from JSON files (maps to asset_value 1-10)",
+    "step2": "Determine network connectivity from connection data (for TD calculation)",
+    "step3": "Apply asset-type specific CR/IR/AR requirements",
+    "step4": "Calculate CVSS B&E score using environmental metrics",
+    "step5": "Rank vulnerabilities by CVSS B&E scores"
+  }
+}

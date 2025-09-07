@@ -1,0 +1,128 @@
+{
+  "scenario": "NP2",
+  "analysis_type": "system_level_algorithm2",
+  "timestamp": "2025-09-05 21:00:05",
+  "rankings": [
+    {
+      "rank": 1,
+      "cve_id": "CVE-2020-1472",
+      "priority_score": "0.6502",
+      "cvss": "10.0",
+      "exploit_score": "0.620897",
+      "epss": "0.403",
+      "component_id": 1,
+      "asset_id": "6",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 2,
+      "cve_id": "CVE-2022-27518",
+      "priority_score": "0.6321",
+      "cvss": "9.8",
+      "exploit_score": "0.561449",
+      "epss": "0.205",
+      "component_id": 2,
+      "asset_id": "3",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 3,
+      "cve_id": "CVE-2019-19781",
+      "priority_score": "0.5552",
+      "cvss": "9.8",
+      "exploit_score": "0.792614",
+      "epss": "0.975",
+      "component_id": 2,
+      "asset_id": "3",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 4,
+      "cve_id": "CVE-2019-11510",
+      "priority_score": "0.4927",
+      "cvss": "10.0",
+      "exploit_score": "0.791891",
+      "epss": "0.973",
+      "component_id": 2,
+      "asset_id": "2",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 5,
+      "cve_id": "CVE-2021-42278",
+      "priority_score": "0.3813",
+      "cvss": "8.8",
+      "exploit_score": "0.502241",
+      "epss": "0.007",
+      "component_id": 2,
+      "asset_id": "6",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 6,
+      "cve_id": "CVE-2018-13379",
+      "priority_score": "0.2327",
+      "cvss": "9.8",
+      "exploit_score": "0.790589",
+      "epss": "0.969",
+      "component_id": 1,
+      "asset_id": "5",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 7,
+      "cve_id": "CVE-2020-5902",
+      "priority_score": "0.1960",
+      "cvss": "9.8",
+      "exploit_score": "0.792626",
+      "epss": "0.975",
+      "component_id": 1,
+      "asset_id": "1",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 8,
+      "cve_id": "CVE-2021-31955",
+      "priority_score": "0.1554",
+      "cvss": "5.5",
+      "exploit_score": "0.503126",
+      "epss": "0.010",
+      "component_id": 1,
+      "asset_id": "6",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 9,
+      "cve_id": "CVE-2020-1631",
+      "priority_score": "0.0459",
+      "cvss": "9.8",
+      "exploit_score": "0.501587",
+      "epss": "0.005",
+      "component_id": 1,
+      "asset_id": "4",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 10,
+      "cve_id": "CVE-2019-11540",
+      "priority_score": "0.0057",
+      "cvss": "8.3",
+      "exploit_score": "0.010641",
+      "epss": "0.035",
+      "component_id": 2,
+      "asset_id": "2",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 11,
+      "cve_id": "CVE-2021-43206",
+      "priority_score": "0.0000",
+      "cvss": "4.3",
+      "exploit_score": "0.000216",
+      "epss": "0.001",
+      "component_id": 1,
+      "asset_id": "5",
+      "patched_risk": 0.0
+    }
+  ]
+}

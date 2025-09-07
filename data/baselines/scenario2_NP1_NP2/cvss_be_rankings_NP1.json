@@ -1,0 +1,142 @@
+{
+  "description": "CVSS Base + Environmental (B&E) rankings for Network Perimeter 1 scenario",
+  "source": "Calculated using ILLATION methodology with extracted criticality levels",
+  "methodology": {
+    "base_score": "From CVSS scores in vulnerability data",
+    "environmental_factors": {
+      "CDP": "Based on criticality_level from asset data (2→L, 3→LM, 4→M, 6→H)",
+      "TD": "High for all assets (fully connected network in NP1)",
+      "CR_IR_AR": "Based on asset type and organizational requirements"
+    }
+  },
+  "environmental_metrics": {
+    "Firewall": {"criticality_level": 2, "CDP": "L", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "VPN": {"criticality_level": 2, "CDP": "L", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "MailS": {"criticality_level": 4, "CDP": "M", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "WebS1": {"criticality_level": 2, "CDP": "L", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "WebS2": {"criticality_level": 3, "CDP": "LM", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "DC1": {"criticality_level": 6, "CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"}
+  },
+  "rankings": [
+    {
+      "cve_id": "CVE-2020-1472",
+      "cvss_base": 10.0,
+      "cvss_be": 10.0,
+      "rank": 1,
+      "asset_name": "DC1",
+      "criticality_level": 6,
+      "description": "Zerologon - Domain Controller with highest criticality",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2019-11510",
+      "cvss_base": 10.0,
+      "cvss_be": 9.8,
+      "rank": 2,
+      "asset_name": "VPN",
+      "criticality_level": 2,
+      "description": "Pulse Secure - Critical VPN vulnerability",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-5902",
+      "cvss_base": 9.8,
+      "cvss_be": 9.6,
+      "rank": 3,
+      "asset_name": "Firewall",
+      "criticality_level": 2,
+      "description": "F5 BIG-IP - Critical firewall vulnerability",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2019-19781",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 4,
+      "asset_name": "MailS",
+      "criticality_level": 4,
+      "description": "Citrix Gateway - Mail server with medium criticality",
+      "environmental_config": "CDP:M, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2022-27518",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 5,
+      "asset_name": "MailS",
+      "criticality_level": 4,
+      "description": "Citrix Gateway RCE - Same asset as above",
+      "environmental_config": "CDP:M, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2018-13379",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 6,
+      "asset_name": "WebS2",
+      "criticality_level": 3,
+      "description": "Fortinet FortiOS - Web server with low-medium criticality",
+      "environmental_config": "CDP:LM, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-1631",
+      "cvss_base": 9.8,
+      "cvss_be": 9.6,
+      "rank": 7,
+      "asset_name": "WebS1",
+      "criticality_level": 2,
+      "description": "Juniper Junos - Web server vulnerability",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2021-42278",
+      "cvss_base": 8.8,
+      "cvss_be": 8.8,
+      "rank": 8,
+      "asset_name": "DC1",
+      "criticality_level": 6,
+      "description": "AD Elevation of Privilege - High criticality DC",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2019-11540",
+      "cvss_base": 8.3,
+      "cvss_be": 8.1,
+      "rank": 9,
+      "asset_name": "VPN",
+      "criticality_level": 2,
+      "description": "Pulse Secure session hijacking",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2021-31955",
+      "cvss_base": 5.5,
+      "cvss_be": 5.5,
+      "rank": 10,
+      "asset_name": "DC1",
+      "criticality_level": 6,
+      "description": "Windows Kernel Information Disclosure",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2021-43206",
+      "cvss_base": 4.3,
+      "cvss_be": 4.4,
+      "rank": 11,
+      "asset_name": "WebS2",
+      "criticality_level": 3,
+      "description": "Fortinet information disclosure",
+      "environmental_config": "CDP:LM, TD:H, CR:H, IR:H, AR:H"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 11,
+    "cvss_be_range": "4.4 - 10.0",
+    "ranking_insights": [
+      "DC1 vulnerabilities maintain top priority due to criticality level 6",
+      "Lower criticality assets (level 2) receive slight environmental penalty",
+      "Mail server (level 4) maintains near-base scores",
+      "Environmental factors preserve relative risk ordering"
+    ]
+  }
+}

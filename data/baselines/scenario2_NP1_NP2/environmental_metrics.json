@@ -1,0 +1,33 @@
+{
+  "description": "Environmental metrics configuration for CVSS environmental scoring",
+  "legend": {
+    "CDP": "Collateral Damage Potential",
+    "TD": "Target Distribution", 
+    "CR": "Confidentiality Requirement",
+    "IR": "Integrity Requirement",
+    "AR": "Availability Requirement",
+    "values": {
+      "N": "None", "L": "Low", "LM": "Low-Medium", "M": "Medium", "MH": "Medium-High", "H": "High"
+    }
+  },
+  "environmental_configs": {
+    "NP1": {
+      "User1": {"CDP": "LM", "TD": "H", "CR": "L", "IR": "L", "AR": "L"},
+      "User2": {"CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+      "MailS": {"CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+      "WebS1": {"CDP": "H", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+      "WebS2": {"CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"}
+    },
+    "NP2": {
+      "User1": {"CDP": "LM", "TD": "H", "CR": "L", "IR": "L", "AR": "L"},
+      "User2": {"CDP": "H", "TD": "M", "CR": "H", "IR": "H", "AR": "H"},
+      "MailS": {"CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+      "WebS1": {"CDP": "H", "TD": "N", "CR": "H", "IR": "H", "AR": "H"},
+      "WebS2": {"CDP": "MH", "TD": "H", "CR": "H", "IR": "H", "AR": "H"}
+    }
+  },
+  "changes_np1_to_np2": [
+    "User2: TD changed from H to M (network isolation impact)",
+    "WebS1: TD changed from H to N (complete isolation)"
+  ]
+}

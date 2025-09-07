@@ -1,0 +1,98 @@
+{
+  "description": "EPSS rankings extracted from asset data",
+  "methodology": "Ranked by EPSS score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2020-5902",
+      "epss": 0.97542,
+      "rank": 1,
+      "asset_id": 1,
+      "asset_name": "Firewall",
+      "description": "EPSS 0.975 vulnerability on Firewall"
+    },
+    {
+      "cve_id": "CVE-2019-19781",
+      "epss": 0.97538,
+      "rank": 2,
+      "asset_id": 3,
+      "asset_name": "MailS",
+      "description": "EPSS 0.975 vulnerability on MailS"
+    },
+    {
+      "cve_id": "CVE-2019-11510",
+      "epss": 0.97297,
+      "rank": 3,
+      "asset_id": 2,
+      "asset_name": "VPN",
+      "description": "EPSS 0.973 vulnerability on VPN"
+    },
+    {
+      "cve_id": "CVE-2018-13379",
+      "epss": 0.96863,
+      "rank": 4,
+      "asset_id": 5,
+      "asset_name": "WebS2",
+      "description": "EPSS 0.969 vulnerability on WebS2"
+    },
+    {
+      "cve_id": "CVE-2020-1472",
+      "epss": 0.40299,
+      "rank": 5,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "EPSS 0.403 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2022-27518",
+      "epss": 0.20483,
+      "rank": 6,
+      "asset_id": 3,
+      "asset_name": "MailS",
+      "description": "EPSS 0.205 vulnerability on MailS"
+    },
+    {
+      "cve_id": "CVE-2019-11540",
+      "epss": 0.03547,
+      "rank": 7,
+      "asset_id": 2,
+      "asset_name": "VPN",
+      "description": "EPSS 0.035 vulnerability on VPN"
+    },
+    {
+      "cve_id": "CVE-2021-31955",
+      "epss": 0.01042,
+      "rank": 8,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "EPSS 0.010 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2021-42278",
+      "epss": 0.00747,
+      "rank": 9,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "EPSS 0.007 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2020-1631",
+      "epss": 0.00529,
+      "rank": 10,
+      "asset_id": 4,
+      "asset_name": "WebS1",
+      "description": "EPSS 0.005 vulnerability on WebS1"
+    },
+    {
+      "cve_id": "CVE-2021-43206",
+      "epss": 0.00072,
+      "rank": 11,
+      "asset_id": 5,
+      "asset_name": "WebS2",
+      "description": "EPSS 0.001 vulnerability on WebS2"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 11,
+    "epss_range": "0.001 - 0.975"
+  }
+}

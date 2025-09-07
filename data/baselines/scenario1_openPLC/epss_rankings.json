@@ -1,0 +1,50 @@
+{
+  "description": "EPSS rankings extracted from asset data",
+  "methodology": "Ranked by EPSS score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2014-0160",
+      "epss": 0.97354,
+      "rank": 1,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "EPSS 0.974 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2016-5325",
+      "epss": 0.00437,
+      "rank": 2,
+      "asset_id": "default_asset",
+      "asset_name": "Node.js",
+      "description": "EPSS 0.004 vulnerability on Node.js"
+    },
+    {
+      "cve_id": "CVE-2018-0734",
+      "epss": 0.00342,
+      "rank": 3,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "EPSS 0.003 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2018-5407",
+      "epss": 0.00061,
+      "rank": 4,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "EPSS 0.001 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2014-0076",
+      "epss": 0.00046,
+      "rank": 5,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "EPSS 0.000 vulnerability on openssl"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 5,
+    "epss_range": "0.000 - 0.974"
+  }
+}

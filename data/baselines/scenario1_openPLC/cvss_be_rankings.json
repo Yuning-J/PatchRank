@@ -1,0 +1,71 @@
+{
+  "description": "CVSS Base + Environmental (B&E) rankings for OpenPLC scenario",
+  "methodology": {
+    "base_score": "From CVSS scores in vulnerability data",
+    "environmental_factors": {
+      "CDP": "Based on component criticality (OpenSSL=Medium, Node.js=Low-Medium)",
+      "TD": "High for all components (fully connected network)",
+      "CR": "Medium for application components",
+      "IR": "High for system components (integrity critical)",
+      "AR": "Medium for most components"
+    }
+  },
+  "environmental_metrics": {
+    "openssl": {"asset_value": 5, "CDP": "LM", "TD": "H", "CR": "M", "IR": "H", "AR": "M"},
+    "Node.js": {"asset_value": 4, "CDP": "L", "TD": "H", "CR": "M", "IR": "M", "AR": "M"}
+  },
+  "rankings": [
+    {
+      "cve_id": "CVE-2014-0160",
+      "cvss_base": 7.5,
+      "cvss_be": 8.9,
+      "rank": 1,
+      "asset_name": "openssl",
+      "description": "Heartbleed - Critical vulnerability with high environmental impact",
+      "environmental_adjustment": "+1.4"
+    },
+    {
+      "cve_id": "CVE-2016-5325",
+      "cvss_base": 6.1,
+      "cvss_be": 7.2,
+      "rank": 2,
+      "asset_name": "Node.js",
+      "description": "Node.js vulnerability with moderate environmental impact",
+      "environmental_adjustment": "+1.1"
+    },
+    {
+      "cve_id": "CVE-2018-0734",
+      "cvss_base": 5.9,
+      "cvss_be": 7.1,
+      "rank": 3,
+      "asset_name": "openssl",
+      "description": "OpenSSL timing attack with elevated environmental score",
+      "environmental_adjustment": "+1.2"
+    },
+    {
+      "cve_id": "CVE-2018-5407",
+      "cvss_base": 4.7,
+      "cvss_be": 5.8,
+      "rank": 4,
+      "asset_name": "openssl",
+      "description": "OpenSSL side-channel attack",
+      "environmental_adjustment": "+1.1"
+    },
+    {
+      "cve_id": "CVE-2014-0076",
+      "cvss_base": 2.8,
+      "cvss_be": 3.6,
+      "rank": 5,
+      "asset_name": "openssl",
+      "description": "OpenSSL ECDSA vulnerability with minimal impact",
+      "environmental_adjustment": "+0.8"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 5,
+    "cvss_be_range": "3.6 - 8.9",
+    "avg_environmental_boost": "+1.12",
+    "critical_assets": ["openssl (system component)"],
+    "ranking_changes": "CVE-2014-0160 remains top priority with environmental factors"
+  }
+}

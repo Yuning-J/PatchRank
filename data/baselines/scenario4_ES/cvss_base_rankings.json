@@ -1,0 +1,410 @@
+{
+  "description": "CVSS Base rankings extracted from asset data",
+  "methodology": "Ranked by CVSS base score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2023-1523",
+      "cvss": 10.0,
+      "rank": 1,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "CVSS 10.0 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2020-1938",
+      "cvss": 9.8,
+      "rank": 2,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 9.8 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-36028",
+      "cvss": 9.8,
+      "rank": 3,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 9.8 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2021-35971",
+      "cvss": 9.8,
+      "rank": 4,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "CVSS 9.8 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2020-26299",
+      "cvss": 9.6,
+      "rank": 5,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "CVSS 9.6 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2020-15152",
+      "cvss": 9.1,
+      "rank": 6,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "CVSS 9.1 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2020-3187",
+      "cvss": 9.1,
+      "rank": 7,
+      "asset_id": 8,
+      "asset_name": "External Firewall",
+      "description": "CVSS 9.1 vulnerability on External Firewall"
+    },
+    {
+      "cve_id": "CVE-2023-43641",
+      "cvss": 8.8,
+      "rank": 8,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 8.8 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-38169",
+      "cvss": 8.8,
+      "rank": 9,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "CVSS 8.8 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2021-25296",
+      "cvss": 8.8,
+      "rank": 10,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 8.8 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-40933",
+      "cvss": 8.8,
+      "rank": 11,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 8.8 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-32707",
+      "cvss": 8.8,
+      "rank": 12,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 8.8 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2024-29988",
+      "cvss": 8.8,
+      "rank": 13,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 8.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2024-38021",
+      "cvss": 8.8,
+      "rank": 14,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 8.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-35311",
+      "cvss": 8.8,
+      "rank": 15,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 8.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2024-5839",
+      "cvss": 8.8,
+      "rank": 16,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 8.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-48123",
+      "cvss": 8.8,
+      "rank": 17,
+      "asset_id": 9,
+      "asset_name": "Internal Firewall",
+      "description": "CVSS 8.8 vulnerability on Internal Firewall"
+    },
+    {
+      "cve_id": "CVE-2020-8616",
+      "cvss": 8.6,
+      "rank": 18,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 8.6 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-40598",
+      "cvss": 8.5,
+      "rank": 19,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 8.5 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2020-8625",
+      "cvss": 8.1,
+      "rank": 20,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 8.1 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2024-6387",
+      "cvss": 8.1,
+      "rank": 21,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 8.1 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2022-0492",
+      "cvss": 7.8,
+      "rank": 22,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 7.8 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-3156",
+      "cvss": 7.8,
+      "rank": 23,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 7.8 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2024-21338",
+      "cvss": 7.8,
+      "rank": 24,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 7.8 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2022-34918",
+      "cvss": 7.8,
+      "rank": 25,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "CVSS 7.8 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2022-29581",
+      "cvss": 7.8,
+      "rank": 26,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "CVSS 7.8 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2024-30051",
+      "cvss": 7.8,
+      "rank": 27,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 7.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2024-26169",
+      "cvss": 7.8,
+      "rank": 28,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 7.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2021-38646",
+      "cvss": 7.8,
+      "rank": 29,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "CVSS 7.8 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-32706",
+      "cvss": 7.7,
+      "rank": 30,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 7.7 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2021-41773",
+      "cvss": 7.5,
+      "rank": 31,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 7.5 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-46589",
+      "cvss": 7.5,
+      "rank": 32,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 7.5 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-44487",
+      "cvss": 7.5,
+      "rank": 33,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 7.5 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2021-25215",
+      "cvss": 7.5,
+      "rank": 34,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 7.5 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-21839",
+      "cvss": 7.5,
+      "rank": 35,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 7.5 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2022-22965",
+      "cvss": 7.5,
+      "rank": 36,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 7.5 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-36884",
+      "cvss": 7.5,
+      "rank": 37,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 7.5 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2020-25719",
+      "cvss": 7.2,
+      "rank": 38,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 7.2 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-51385",
+      "cvss": 6.5,
+      "rank": 39,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "CVSS 6.5 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2021-26414",
+      "cvss": 6.5,
+      "rank": 40,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 6.5 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-41080",
+      "cvss": 6.1,
+      "rank": 41,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 6.1 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2019-0221",
+      "cvss": 6.1,
+      "rank": 42,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 6.1 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-47272",
+      "cvss": 6.1,
+      "rank": 43,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 6.1 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2024-20986",
+      "cvss": 6.1,
+      "rank": 44,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 6.1 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2021-2161",
+      "cvss": 5.9,
+      "rank": 45,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 5.9 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-36728",
+      "cvss": 5.5,
+      "rank": 46,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "CVSS 5.5 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2023-51072",
+      "cvss": 5.4,
+      "rank": 47,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "CVSS 5.4 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-42327",
+      "cvss": 5.4,
+      "rank": 48,
+      "asset_id": 9,
+      "asset_name": "Internal Firewall",
+      "description": "CVSS 5.4 vulnerability on Internal Firewall"
+    },
+    {
+      "cve_id": "CVE-2024-21733",
+      "cvss": 5.3,
+      "rank": 49,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "CVSS 5.3 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-2163",
+      "cvss": 5.3,
+      "rank": 50,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "CVSS 5.3 vulnerability on Application Server"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 50,
+    "cvss_range": "5.3 - 10.0"
+  }
+}

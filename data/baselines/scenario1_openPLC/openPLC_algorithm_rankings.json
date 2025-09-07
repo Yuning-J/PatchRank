@@ -1,0 +1,61 @@
+{
+  "scenario": "openPLC",
+  "analysis_type": "asset_level_algorithm2",
+  "rankings": [
+    {
+      "rank": 1,
+      "cve_id": "CVE-2014-0160",
+      "priority_score": "1.5337",
+      "cvss": "7.5",
+      "exploit_score": "0.792062",
+      "epss": "0.974",
+      "component_id": 2,
+      "asset_id": "default_asset",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 2,
+      "cve_id": "CVE-2016-5325",
+      "priority_score": "0.1242",
+      "cvss": "6.1",
+      "exploit_score": "0.001311",
+      "epss": "0.004",
+      "component_id": 3,
+      "asset_id": "default_asset",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 3,
+      "cve_id": "CVE-2018-0734",
+      "priority_score": "0.1098",
+      "cvss": "5.9",
+      "exploit_score": "0.001026",
+      "epss": "0.003",
+      "component_id": 1,
+      "asset_id": "default_asset",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 4,
+      "cve_id": "CVE-2018-5407",
+      "priority_score": "0.1083",
+      "cvss": "4.7",
+      "exploit_score": "0.000183",
+      "epss": "0.001",
+      "component_id": 1,
+      "asset_id": "default_asset",
+      "patched_risk": 0.0
+    },
+    {
+      "rank": 5,
+      "cve_id": "CVE-2014-0076",
+      "priority_score": "0.0421",
+      "cvss": "2.8",
+      "exploit_score": "0.000138",
+      "epss": "0.000",
+      "component_id": 2,
+      "asset_id": "default_asset",
+      "patched_risk": 0.0
+    }
+  ]
+}

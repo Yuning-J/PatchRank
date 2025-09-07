@@ -1,0 +1,90 @@
+{
+  "description": "CVSS Base rankings extracted from asset data",
+  "methodology": "Ranked by CVSS base score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2019-11510",
+      "cvss": 10.0,
+      "rank": 1,
+      "asset_id": 1,
+      "asset_name": "VPN Server",
+      "description": "CVSS 10.0 vulnerability on VPN Server"
+    },
+    {
+      "cve_id": "CVE-2017-7269",
+      "cvss": 9.8,
+      "rank": 2,
+      "asset_id": 2,
+      "asset_name": "Web Server",
+      "description": "CVSS 9.8 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2016-5743",
+      "cvss": 9.8,
+      "rank": 3,
+      "asset_id": 5,
+      "asset_name": "HMI",
+      "description": "CVSS 9.8 vulnerability on HMI"
+    },
+    {
+      "cve_id": "CVE-2019-10922",
+      "cvss": 9.8,
+      "rank": 4,
+      "asset_id": 6,
+      "asset_name": "Engineering Workstation",
+      "description": "CVSS 9.8 vulnerability on Engineering Workstation"
+    },
+    {
+      "cve_id": "CVE-2021-1636",
+      "cvss": 8.8,
+      "rank": 5,
+      "asset_id": 4,
+      "asset_name": "Historian Database",
+      "description": "CVSS 8.8 vulnerability on Historian Database"
+    },
+    {
+      "cve_id": "CVE-2016-8673",
+      "cvss": 8.8,
+      "rank": 6,
+      "asset_id": 7,
+      "asset_name": "PLC",
+      "description": "CVSS 8.8 vulnerability on PLC"
+    },
+    {
+      "cve_id": "CVE-2017-0143",
+      "cvss": 8.1,
+      "rank": 7,
+      "asset_id": 3,
+      "asset_name": "Workstation",
+      "description": "CVSS 8.1 vulnerability on Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-21528",
+      "cvss": 7.8,
+      "rank": 8,
+      "asset_id": 4,
+      "asset_name": "Historian Database",
+      "description": "CVSS 7.8 vulnerability on Historian Database"
+    },
+    {
+      "cve_id": "CVE-2017-8692",
+      "cvss": 7.5,
+      "rank": 9,
+      "asset_id": 3,
+      "asset_name": "Workstation",
+      "description": "CVSS 7.5 vulnerability on Workstation"
+    },
+    {
+      "cve_id": "CVE-2016-9159",
+      "cvss": 5.9,
+      "rank": 10,
+      "asset_id": 7,
+      "asset_name": "PLC",
+      "description": "CVSS 5.9 vulnerability on PLC"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 10,
+    "cvss_range": "5.9 - 10.0"
+  }
+}

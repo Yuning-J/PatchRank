@@ -1,0 +1,141 @@
+{
+  "description": "CVSS Base + Environmental (B&E) rankings for Industrial Control Systems scenario",
+  "methodology": {
+    "base_score": "From CVSS scores in vulnerability data",
+    "environmental_factors": {
+      "CDP": "Based on criticality_level (3→LM, 4→M, 5→MH)",
+      "TD": "Medium for most ICS components (segmented networks)",
+      "CR": "Low for PLCs (confidentiality less critical than availability)",
+      "IR": "High for all ICS components (integrity critical)",
+      "AR": "High for all ICS components (availability critical)"
+    }
+  },
+  "environmental_metrics": {
+    "VPN_Server": {"criticality_level": 4, "CDP": "M", "TD": "H", "CR": "H", "IR": "H", "AR": "H"},
+    "Web_Server": {"criticality_level": 3, "CDP": "LM", "TD": "H", "CR": "M", "IR": "H", "AR": "H"},
+    "Workstation": {"criticality_level": 3, "CDP": "LM", "TD": "M", "CR": "H", "IR": "H", "AR": "M"},
+    "Historian_Database": {"criticality_level": 4, "CDP": "M", "TD": "M", "CR": "H", "IR": "H", "AR": "H"},
+    "HMI": {"criticality_level": 5, "CDP": "MH", "TD": "M", "CR": "M", "IR": "H", "AR": "H"},
+    "Engineering_Workstation": {"criticality_level": 5, "CDP": "MH", "TD": "M", "CR": "H", "IR": "H", "AR": "H"},
+    "PLC": {"criticality_level": 5, "CDP": "MH", "TD": "M", "CR": "L", "IR": "H", "AR": "H"}
+  },
+  "rankings": [
+    {
+      "cve_id": "CVE-2019-11510",
+      "cvss_base": 10.0,
+      "cvss_be": 9.9,
+      "rank": 1,
+      "asset_name": "VPN_Server",
+      "criticality_level": 4,
+      "description": "Pulse Secure - Critical VPN entry point to ICS network",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2017-7269",
+      "cvss_base": 9.8,
+      "cvss_be": 9.6,
+      "rank": 2,
+      "asset_name": "Web_Server",
+      "criticality_level": 3,
+      "description": "IIS 6.0 RCE - DMZ web server exposure",
+      "environmental_adjustment": "-0.2"
+    },
+    {
+      "cve_id": "CVE-2016-5743",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 3,
+      "asset_name": "HMI",
+      "criticality_level": 5,
+      "description": "SIMATIC WinCC - Critical HMI in control network",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2019-10922",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 4,
+      "asset_name": "Engineering_Workstation",
+      "criticality_level": 5,
+      "description": "EcoStruxure - Engineering station with high criticality",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2021-1636",
+      "cvss_base": 8.8,
+      "cvss_be": 8.7,
+      "rank": 5,
+      "asset_name": "Historian_Database",
+      "criticality_level": 4,
+      "description": "PI Server - Process data historian",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2016-8673",
+      "cvss_base": 8.8,
+      "cvss_be": 8.7,
+      "rank": 6,
+      "asset_name": "PLC",
+      "criticality_level": 5,
+      "description": "Siemens S7-1500 - Critical control system PLC",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2017-0143",
+      "cvss_base": 8.1,
+      "cvss_be": 7.8,
+      "rank": 7,
+      "asset_name": "Workstation",
+      "criticality_level": 3,
+      "description": "EternalBlue - Operator workstation vulnerability",
+      "environmental_adjustment": "-0.3"
+    },
+    {
+      "cve_id": "CVE-2023-21528",
+      "cvss_base": 7.8,
+      "cvss_be": 7.7,
+      "rank": 8,
+      "asset_name": "Historian_Database",
+      "criticality_level": 4,
+      "description": "PI Server escalation - Data integrity concern",
+      "environmental_adjustment": "-0.1"
+    },
+    {
+      "cve_id": "CVE-2017-8692",
+      "cvss_base": 7.5,
+      "cvss_be": 7.2,
+      "rank": 9,
+      "asset_name": "Workstation",
+      "criticality_level": 3,
+      "description": "Windows PowerShell - Workstation scripting vulnerability",
+      "environmental_adjustment": "-0.3"
+    },
+    {
+      "cve_id": "CVE-2016-9159",
+      "cvss_base": 5.9,
+      "cvss_be": 5.8,
+      "rank": 10,
+      "asset_name": "PLC",
+      "criticality_level": 5,
+      "description": "S7-1500 DoS - PLC availability concern",
+      "environmental_adjustment": "-0.1"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 10,
+    "cvss_be_range": "5.8 - 9.9",
+    "ics_specific_insights": [
+      "VPN vulnerabilities remain highest priority due to network entry point",
+      "HMI and Engineering Workstation vulnerabilities elevated due to critical functions",
+      "PLC vulnerabilities maintain high priority despite lower confidentiality requirements",
+      "Workstation vulnerabilities reduced due to network segmentation (TD=M)",
+      "Environmental factors reflect ICS operational priorities (availability > confidentiality)"
+    ],
+    "security_priorities": [
+      "Secure remote access points (VPN, Web servers)",
+      "Protect engineering and operator interfaces",
+      "Maintain PLC and historian integrity",
+      "Implement network segmentation for workstations"
+    ]
+  }
+}

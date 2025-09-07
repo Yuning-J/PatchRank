@@ -1,0 +1,410 @@
+{
+  "description": "EPSS rankings extracted from asset data",
+  "methodology": "Ranked by EPSS score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2022-22965",
+      "epss": 0.97485,
+      "rank": 1,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.975 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2021-41773",
+      "epss": 0.97447,
+      "rank": 2,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.974 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2020-3187",
+      "epss": 0.97297,
+      "rank": 3,
+      "asset_id": 8,
+      "asset_name": "External Firewall",
+      "description": "EPSS 0.973 vulnerability on External Firewall"
+    },
+    {
+      "cve_id": "CVE-2020-1938",
+      "epss": 0.97284,
+      "rank": 4,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.973 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-25296",
+      "epss": 0.96507,
+      "rank": 5,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.965 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2021-3156",
+      "epss": 0.96133,
+      "rank": 6,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.961 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-21839",
+      "epss": 0.95721,
+      "rank": 7,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.957 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-32707",
+      "epss": 0.89852,
+      "rank": 8,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.899 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-44487",
+      "epss": 0.81041,
+      "rank": 9,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.810 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2024-6387",
+      "epss": 0.71475,
+      "rank": 10,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.715 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-36028",
+      "epss": 0.57012,
+      "rank": 11,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.570 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2020-8625",
+      "epss": 0.18732,
+      "rank": 12,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.187 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2021-38646",
+      "epss": 0.17921,
+      "rank": 13,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.179 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-36884",
+      "epss": 0.09991,
+      "rank": 14,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.100 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2022-0492",
+      "epss": 0.09515,
+      "rank": 15,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.095 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-25215",
+      "epss": 0.0674,
+      "rank": 16,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.067 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-38169",
+      "epss": 0.02826,
+      "rank": 17,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "EPSS 0.028 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2020-8616",
+      "epss": 0.02336,
+      "rank": 18,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.023 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-35311",
+      "epss": 0.01769,
+      "rank": 19,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.018 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2024-21338",
+      "epss": 0.01426,
+      "rank": 20,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.014 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2019-0221",
+      "epss": 0.01096,
+      "rank": 21,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.011 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2024-21733",
+      "epss": 0.00692,
+      "rank": 22,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.007 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-35971",
+      "epss": 0.00683,
+      "rank": 23,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "EPSS 0.007 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2022-34918",
+      "epss": 0.00635,
+      "rank": 24,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "EPSS 0.006 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2023-46589",
+      "epss": 0.00484,
+      "rank": 25,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.005 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2021-2161",
+      "epss": 0.00353,
+      "rank": 26,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.004 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2020-26299",
+      "epss": 0.00337,
+      "rank": 27,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "EPSS 0.003 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2020-15152",
+      "epss": 0.0032,
+      "rank": 28,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "EPSS 0.003 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2024-26169",
+      "epss": 0.00316,
+      "rank": 29,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.003 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-51385",
+      "epss": 0.00267,
+      "rank": 30,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.003 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2023-41080",
+      "epss": 0.00244,
+      "rank": 31,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.002 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2024-29988",
+      "epss": 0.00226,
+      "rank": 32,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.002 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2021-2163",
+      "epss": 0.00224,
+      "rank": 33,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.002 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-48123",
+      "epss": 0.0017,
+      "rank": 34,
+      "asset_id": 9,
+      "asset_name": "Internal Firewall",
+      "description": "EPSS 0.002 vulnerability on Internal Firewall"
+    },
+    {
+      "cve_id": "CVE-2023-43641",
+      "epss": 0.00136,
+      "rank": 35,
+      "asset_id": 2,
+      "asset_name": "DNS Server",
+      "description": "EPSS 0.001 vulnerability on DNS Server"
+    },
+    {
+      "cve_id": "CVE-2020-25719",
+      "epss": 0.00123,
+      "rank": 36,
+      "asset_id": 1,
+      "asset_name": "Web Server",
+      "description": "EPSS 0.001 vulnerability on Web Server"
+    },
+    {
+      "cve_id": "CVE-2023-47272",
+      "epss": 0.00098,
+      "rank": 37,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.001 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2023-40933",
+      "epss": 0.00097,
+      "rank": 38,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.001 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-51072",
+      "epss": 0.00095,
+      "rank": 39,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.001 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2024-38021",
+      "epss": 0.00091,
+      "rank": 40,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.001 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2023-42327",
+      "epss": 0.00083,
+      "rank": 41,
+      "asset_id": 9,
+      "asset_name": "Internal Firewall",
+      "description": "EPSS 0.001 vulnerability on Internal Firewall"
+    },
+    {
+      "cve_id": "CVE-2023-1523",
+      "epss": 0.0007,
+      "rank": 42,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "EPSS 0.001 vulnerability on FTP Server"
+    },
+    {
+      "cve_id": "CVE-2023-40598",
+      "epss": 0.00065,
+      "rank": 43,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.001 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-32706",
+      "epss": 0.00055,
+      "rank": 44,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.001 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2024-5839",
+      "epss": 0.00054,
+      "rank": 45,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.001 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2021-26414",
+      "epss": 0.0005,
+      "rank": 46,
+      "asset_id": 6,
+      "asset_name": "Administrative Server",
+      "description": "EPSS 0.001 vulnerability on Administrative Server"
+    },
+    {
+      "cve_id": "CVE-2023-36728",
+      "epss": 0.00049,
+      "rank": 47,
+      "asset_id": 4,
+      "asset_name": "Database Server",
+      "description": "EPSS 0.000 vulnerability on Database Server"
+    },
+    {
+      "cve_id": "CVE-2024-30051",
+      "epss": 0.00048,
+      "rank": 48,
+      "asset_id": 7,
+      "asset_name": "User Workstation",
+      "description": "EPSS 0.000 vulnerability on User Workstation"
+    },
+    {
+      "cve_id": "CVE-2024-20986",
+      "epss": 0.00046,
+      "rank": 49,
+      "asset_id": 3,
+      "asset_name": "Application Server",
+      "description": "EPSS 0.000 vulnerability on Application Server"
+    },
+    {
+      "cve_id": "CVE-2022-29581",
+      "epss": 0.00042,
+      "rank": 50,
+      "asset_id": 5,
+      "asset_name": "FTP Server",
+      "description": "EPSS 0.000 vulnerability on FTP Server"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 50,
+    "epss_range": "0.000 - 0.975"
+  }
+}

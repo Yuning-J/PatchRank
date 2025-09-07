@@ -1,0 +1,50 @@
+{
+  "description": "CVSS Base rankings extracted from asset data",
+  "methodology": "Ranked by CVSS base score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2014-0160",
+      "cvss": 7.5,
+      "rank": 1,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "CVSS 7.5 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2016-5325",
+      "cvss": 6.1,
+      "rank": 2,
+      "asset_id": "default_asset",
+      "asset_name": "Node.js",
+      "description": "CVSS 6.1 vulnerability on Node.js"
+    },
+    {
+      "cve_id": "CVE-2018-0734",
+      "cvss": 5.9,
+      "rank": 3,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "CVSS 5.9 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2018-5407",
+      "cvss": 4.7,
+      "rank": 4,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "CVSS 4.7 vulnerability on openssl"
+    },
+    {
+      "cve_id": "CVE-2014-0076",
+      "cvss": 2.8,
+      "rank": 5,
+      "asset_id": "default_asset",
+      "asset_name": "openssl",
+      "description": "CVSS 2.8 vulnerability on openssl"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 5,
+    "cvss_range": "2.8 - 7.5"
+  }
+}

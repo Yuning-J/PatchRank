@@ -1,0 +1,659 @@
+{
+  "description": "CVSS Base + Environmental (B&E) rankings for Enterprise Systems scenario (Top 20)",
+  "methodology": {
+    "base_score": "From CVSS scores in vulnerability data",
+    "environmental_factors": {
+      "CDP": "Based on criticality_level (2\u2192L, 3\u2192LM, 4\u2192M, 5\u2192MH)",
+      "TD": "High for externally exposed systems, Medium for internal systems",
+      "CR_IR_AR": "Based on asset type and enterprise requirements"
+    }
+  },
+  "environmental_metrics": {
+    "Web_Server": {
+      "criticality_level": 2,
+      "CDP": "L",
+      "TD": "H",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    },
+    "DNS_Server": {
+      "criticality_level": 2,
+      "CDP": "L",
+      "TD": "H",
+      "CR": "M",
+      "IR": "H",
+      "AR": "H"
+    },
+    "Application_Server": {
+      "criticality_level": 5,
+      "CDP": "MH",
+      "TD": "M",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    },
+    "Database_Server": {
+      "criticality_level": 5,
+      "CDP": "MH",
+      "TD": "M",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    },
+    "FTP_Server": {
+      "criticality_level": 3,
+      "CDP": "LM",
+      "TD": "H",
+      "CR": "M",
+      "IR": "M",
+      "AR": "M"
+    },
+    "Administrative_Server": {
+      "criticality_level": 4,
+      "CDP": "M",
+      "TD": "M",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    },
+    "User_Workstation": {
+      "criticality_level": 3,
+      "CDP": "LM",
+      "TD": "L",
+      "CR": "M",
+      "IR": "M",
+      "AR": "M"
+    },
+    "External_Firewall": {
+      "criticality_level": 2,
+      "CDP": "L",
+      "TD": "H",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    },
+    "Internal_Firewall": {
+      "criticality_level": 2,
+      "CDP": "L",
+      "TD": "M",
+      "CR": "H",
+      "IR": "H",
+      "AR": "H"
+    }
+  },
+  "rankings": [
+    {
+      "cve_id": "CVE-2023-36028",
+      "cvss_base": 9.8,
+      "cvss_be": 9.8,
+      "rank": 1,
+      "asset_name": "Database_Server",
+      "description": "Windows Server on database with high criticality",
+      "environmental_config": "CDP:MH, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2021-35971",
+      "cvss_base": 9.8,
+      "cvss_be": 9.8,
+      "rank": 2,
+      "asset_name": "Database_Server",
+      "description": "Veeam Backup vulnerability on critical database server",
+      "environmental_config": "CDP:MH, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-1523",
+      "cvss_base": 10.0,
+      "cvss_be": 9.7,
+      "rank": 3,
+      "asset_name": "FTP_Server",
+      "description": "Critical FTP vulnerability with medium criticality (LM environmental config)",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:M, AR:M"
+    },
+    {
+      "cve_id": "CVE-2023-36028",
+      "cvss_base": 9.8,
+      "cvss_be": 9.7,
+      "rank": 4,
+      "asset_name": "Administrative_Server",
+      "description": "Windows Server on administrative system",
+      "environmental_config": "CDP:M, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-1938",
+      "cvss_base": 9.8,
+      "cvss_be": 9.6,
+      "rank": 5,
+      "asset_name": "Web_Server",
+      "description": "Apache Tomcat RCE on externally exposed web server",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-26299",
+      "cvss_base": 9.6,
+      "cvss_be": 9.3,
+      "rank": 6,
+      "asset_name": "FTP_Server",
+      "description": "FileZilla Server vulnerability with external exposure",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:M, AR:M"
+    },
+    {
+      "cve_id": "CVE-2023-40933",
+      "cvss_base": 8.8,
+      "cvss_be": 8.9,
+      "rank": 7,
+      "asset_name": "Administrative_Server",
+      "criticality_level": 4,
+      "description": "Security vulnerability on Administrative Server",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2020-3187",
+      "cvss_base": 9.1,
+      "cvss_be": 8.9,
+      "rank": 8,
+      "asset_name": "External_Firewall",
+      "description": "Cisco ASA vulnerability on perimeter defense",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-48123",
+      "cvss_base": 8.8,
+      "cvss_be": 8.8,
+      "rank": 9,
+      "asset_name": "Internal_Firewall",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Internal Firewall",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.0",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2020-15152",
+      "cvss_base": 9.1,
+      "cvss_be": 8.8,
+      "rank": 10,
+      "asset_name": "FTP_Server",
+      "description": "FileZilla Server information disclosure",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:M, AR:M"
+    },
+    {
+      "cve_id": "CVE-2023-38169",
+      "cvss_base": 8.8,
+      "cvss_be": 8.8,
+      "rank": 11,
+      "asset_name": "Database_Server",
+      "description": "SQL Server vulnerability on critical database",
+      "environmental_config": "CDP:MH, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2021-25296",
+      "cvss_base": 8.8,
+      "cvss_be": 8.7,
+      "rank": 12,
+      "asset_name": "Administrative_Server",
+      "description": "Nagios XI RCE on administrative system",
+      "environmental_config": "CDP:M, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-32707",
+      "cvss_base": 8.8,
+      "cvss_be": 8.7,
+      "rank": 13,
+      "asset_name": "Administrative_Server",
+      "description": "Splunk Enterprise vulnerability",
+      "environmental_config": "CDP:M, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-43641",
+      "cvss_base": 8.8,
+      "cvss_be": 8.6,
+      "rank": 14,
+      "asset_name": "DNS_Server",
+      "description": "DNS vulnerability with external exposure",
+      "environmental_config": "CDP:L, TD:H, CR:M, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-8616",
+      "cvss_base": 8.6,
+      "cvss_be": 8.4,
+      "rank": 15,
+      "asset_name": "DNS_Server",
+      "description": "BIND DNS Server DoS vulnerability",
+      "environmental_config": "CDP:L, TD:H, CR:M, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-40598",
+      "cvss_base": 8.5,
+      "cvss_be": 8.4,
+      "rank": 16,
+      "asset_name": "Administrative_Server",
+      "description": "Splunk Enterprise escalation",
+      "environmental_config": "CDP:M, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2024-6387",
+      "cvss_base": 8.1,
+      "cvss_be": 8.1,
+      "rank": 17,
+      "asset_name": "Application_Server",
+      "description": "OpenSSH vulnerability on critical application server",
+      "environmental_config": "CDP:MH, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2020-8625",
+      "cvss_base": 8.1,
+      "cvss_be": 7.9,
+      "rank": 18,
+      "asset_name": "DNS_Server",
+      "description": "BIND DNS Server buffer overflow",
+      "environmental_config": "CDP:L, TD:H, CR:M, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2024-21338",
+      "cvss_base": 7.8,
+      "cvss_be": 7.8,
+      "rank": 19,
+      "asset_name": "Database_Server",
+      "description": "Windows Server escalation on database",
+      "environmental_config": "CDP:MH, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2022-34918",
+      "cvss_base": 7.8,
+      "cvss_be": 7.6,
+      "rank": 20,
+      "asset_name": "FTP_Server",
+      "criticality_level": 3,
+      "description": "Security vulnerability on FTP Server",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-0.2",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2022-29581",
+      "cvss_base": 7.8,
+      "cvss_be": 7.6,
+      "rank": 21,
+      "asset_name": "FTP_Server",
+      "criticality_level": 3,
+      "description": "Security vulnerability on FTP Server",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-0.2",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-3156",
+      "cvss_base": 7.8,
+      "cvss_be": 7.6,
+      "rank": 22,
+      "asset_name": "Web_Server",
+      "description": "Sudo vulnerability on web server",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2022-0492",
+      "cvss_base": 7.8,
+      "cvss_be": 7.6,
+      "rank": 23,
+      "asset_name": "Web_Server",
+      "description": "Container escape on web server",
+      "environmental_config": "CDP:L, TD:H, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-32706",
+      "cvss_base": 7.7,
+      "cvss_be": 7.6,
+      "rank": 24,
+      "asset_name": "Administrative_Server",
+      "description": "Splunk Enterprise information disclosure",
+      "environmental_config": "CDP:M, TD:M, CR:H, IR:H, AR:H"
+    },
+    {
+      "cve_id": "CVE-2023-36884",
+      "cvss_base": 7.5,
+      "cvss_be": 7.5,
+      "rank": 25,
+      "asset_name": "Administrative_Server",
+      "criticality_level": 4,
+      "description": "Security vulnerability on Administrative Server",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.0",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-41773",
+      "cvss_base": 7.5,
+      "cvss_be": 7.4,
+      "rank": 26,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-46589",
+      "cvss_base": 7.5,
+      "cvss_be": 7.4,
+      "rank": 27,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-21839",
+      "cvss_base": 7.5,
+      "cvss_be": 7.4,
+      "rank": 28,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2022-22965",
+      "cvss_base": 7.5,
+      "cvss_be": 7.4,
+      "rank": 29,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-38021",
+      "cvss_base": 8.8,
+      "cvss_be": 7.3,
+      "rank": 30,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.5",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-35311",
+      "cvss_base": 8.8,
+      "cvss_be": 7.3,
+      "rank": 31,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.5",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-5839",
+      "cvss_base": 8.8,
+      "cvss_be": 7.3,
+      "rank": 32,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.5",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-29988",
+      "cvss_base": 8.8,
+      "cvss_be": 7.3,
+      "rank": 33,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.5",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-25215",
+      "cvss_base": 7.5,
+      "cvss_be": 7.3,
+      "rank": 34,
+      "asset_name": "DNS_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on DNS Server",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:H, AR:H",
+      "environmental_adjustment": "-0.2",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-44487",
+      "cvss_base": 7.5,
+      "cvss_be": 7.3,
+      "rank": 35,
+      "asset_name": "DNS_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on DNS Server",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:H, AR:H",
+      "environmental_adjustment": "-0.2",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2020-25719",
+      "cvss_base": 7.2,
+      "cvss_be": 7.1,
+      "rank": 36,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-26414",
+      "cvss_base": 6.5,
+      "cvss_be": 6.5,
+      "rank": 37,
+      "asset_name": "Administrative_Server",
+      "criticality_level": 4,
+      "description": "Security vulnerability on Administrative Server",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.0",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-30051",
+      "cvss_base": 7.8,
+      "cvss_be": 6.4,
+      "rank": 38,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.4",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-26169",
+      "cvss_base": 7.8,
+      "cvss_be": 6.4,
+      "rank": 39,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.4",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-38646",
+      "cvss_base": 7.8,
+      "cvss_be": 6.4,
+      "rank": 40,
+      "asset_name": "User_Workstation",
+      "criticality_level": 3,
+      "description": "Security vulnerability on User Workstation",
+      "environmental_config": "CDP:LM, TD:L, CR:M, IR:M, AR:M",
+      "environmental_adjustment": "-1.4",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-51385",
+      "cvss_base": 6.5,
+      "cvss_be": 6.3,
+      "rank": 41,
+      "asset_name": "DNS_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on DNS Server",
+      "environmental_config": "CDP:LM, TD:H, CR:M, IR:H, AR:H",
+      "environmental_adjustment": "-0.2",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-20986",
+      "cvss_base": 6.1,
+      "cvss_be": 6.0,
+      "rank": 42,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2019-0221",
+      "cvss_base": 6.1,
+      "cvss_be": 6.0,
+      "rank": 43,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-41080",
+      "cvss_base": 6.1,
+      "cvss_be": 6.0,
+      "rank": 44,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-47272",
+      "cvss_base": 6.1,
+      "cvss_be": 6.0,
+      "rank": 45,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-2161",
+      "cvss_base": 5.9,
+      "cvss_be": 5.8,
+      "rank": 46,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-36728",
+      "cvss_base": 5.5,
+      "cvss_be": 5.5,
+      "rank": 47,
+      "asset_name": "Database_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Database Server",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.0",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-51072",
+      "cvss_base": 5.4,
+      "cvss_be": 5.4,
+      "rank": 48,
+      "asset_name": "Administrative_Server",
+      "criticality_level": 4,
+      "description": "Security vulnerability on Administrative Server",
+      "environmental_config": "CDP:H, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "+0.0",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2023-42327",
+      "cvss_base": 5.4,
+      "cvss_be": 5.3,
+      "rank": 49,
+      "asset_name": "Internal_Firewall",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Internal Firewall",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2024-21733",
+      "cvss_base": 5.3,
+      "cvss_be": 5.2,
+      "rank": 50,
+      "asset_name": "Web_Server",
+      "criticality_level": 2,
+      "description": "Security vulnerability on Web Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    },
+    {
+      "cve_id": "CVE-2021-2163",
+      "cvss_base": 5.3,
+      "cvss_be": 5.2,
+      "rank": 51,
+      "asset_name": "Application_Server",
+      "criticality_level": 5,
+      "description": "Security vulnerability on Application Server",
+      "environmental_config": "CDP:MH, TD:H, CR:H, IR:H, AR:H",
+      "environmental_adjustment": "-0.1",
+      "corrected_entry": true
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 51,
+    "cvss_be_range": "5.2 - 9.8",
+    "enterprise_insights": [
+      "Database and Application servers maintain highest priority due to criticality level 5",
+      "Externally exposed systems (Web, DNS, FTP, Firewall) get TD=H boosting scores",
+      "User workstations receive lowest environmental scores due to TD=L",
+      "Administrative servers balance medium criticality with internal network placement",
+      "Critical vulnerabilities on high-value assets remain top priority for patching"
+    ],
+    "security_priorities": [
+      "Secure database and application servers (highest business value)",
+      "Harden externally facing services (web, DNS, FTP)",
+      "Implement network segmentation to reduce TD for internal systems",
+      "Monitor administrative systems for lateral movement prevention"
+    ],
+    "completion_status": "Completed with 31 auto-generated entries",
+    "correction_status": "Asset names and environmental scoring corrected",
+    "final_correction": "User Workstation TD values corrected to TD=L (7 entries)"
+  }
+}

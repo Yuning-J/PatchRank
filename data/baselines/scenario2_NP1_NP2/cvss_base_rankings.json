@@ -1,0 +1,98 @@
+{
+  "description": "CVSS Base rankings extracted from asset data",
+  "methodology": "Ranked by CVSS base score (descending)",
+  "rankings": [
+    {
+      "cve_id": "CVE-2019-11510",
+      "cvss": 10.0,
+      "rank": 1,
+      "asset_id": 2,
+      "asset_name": "VPN",
+      "description": "CVSS 10.0 vulnerability on VPN"
+    },
+    {
+      "cve_id": "CVE-2020-1472",
+      "cvss": 10.0,
+      "rank": 2,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "CVSS 10.0 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2020-5902",
+      "cvss": 9.8,
+      "rank": 3,
+      "asset_id": 1,
+      "asset_name": "Firewall",
+      "description": "CVSS 9.8 vulnerability on Firewall"
+    },
+    {
+      "cve_id": "CVE-2019-19781",
+      "cvss": 9.8,
+      "rank": 4,
+      "asset_id": 3,
+      "asset_name": "MailS",
+      "description": "CVSS 9.8 vulnerability on MailS"
+    },
+    {
+      "cve_id": "CVE-2022-27518",
+      "cvss": 9.8,
+      "rank": 5,
+      "asset_id": 3,
+      "asset_name": "MailS",
+      "description": "CVSS 9.8 vulnerability on MailS"
+    },
+    {
+      "cve_id": "CVE-2020-1631",
+      "cvss": 9.8,
+      "rank": 6,
+      "asset_id": 4,
+      "asset_name": "WebS1",
+      "description": "CVSS 9.8 vulnerability on WebS1"
+    },
+    {
+      "cve_id": "CVE-2018-13379",
+      "cvss": 9.8,
+      "rank": 7,
+      "asset_id": 5,
+      "asset_name": "WebS2",
+      "description": "CVSS 9.8 vulnerability on WebS2"
+    },
+    {
+      "cve_id": "CVE-2021-42278",
+      "cvss": 8.8,
+      "rank": 8,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "CVSS 8.8 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2019-11540",
+      "cvss": 8.3,
+      "rank": 9,
+      "asset_id": 2,
+      "asset_name": "VPN",
+      "description": "CVSS 8.3 vulnerability on VPN"
+    },
+    {
+      "cve_id": "CVE-2021-31955",
+      "cvss": 5.5,
+      "rank": 10,
+      "asset_id": 6,
+      "asset_name": "DC1",
+      "description": "CVSS 5.5 vulnerability on DC1"
+    },
+    {
+      "cve_id": "CVE-2021-43206",
+      "cvss": 4.3,
+      "rank": 11,
+      "asset_id": 5,
+      "asset_name": "WebS2",
+      "description": "CVSS 4.3 vulnerability on WebS2"
+    }
+  ],
+  "summary": {
+    "total_vulnerabilities": 11,
+    "cvss_range": "4.3 - 10.0"
+  }
+}
