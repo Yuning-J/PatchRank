@@ -198,8 +198,11 @@ class DataLoader:
         Returns:
             True if valid, False otherwise
         """
-        required_fields = ['src_ip', 'dst_ip']
-        return all(field in connection for field in required_fields)
+        # Support both IP-based and asset ID-based connection formats
+        ip_based = all(field in connection for field in ['src_ip', 'dst_ip'])
+        asset_id_based = all(field in connection for field in ['source_asset_id', 'destination_asset_id'])
+        
+        return ip_based or asset_id_based
     
     def save_data(self, data: Union[Asset, System], filename: str) -> None:
         """

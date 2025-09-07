@@ -64,6 +64,10 @@ class Vulnerability:
     exploit_likelihood: float = field(default=0.0, init=False)
     propagation_likelihood: float = field(default=0.0, init=False)
     
+    # Resource constraint fields for Task 1.6
+    cost: float = field(default=1.0, metadata={"description": "Patch cost in arbitrary units"})
+    time_required: float = field(default=1.0, metadata={"description": "Time required to apply patch in hours"})
+    
     def __post_init__(self):
         """Validate vulnerability data after initialization"""
         if not self.cve_id:
@@ -80,6 +84,23 @@ class Vulnerability:
         
         if not (0.0 <= self.impact <= 10.0):
             raise ValueError("Impact must be between 0.0 and 10.0")
+        
+        # Validate resource constraint fields
+        if self.cost < 0.0:
+            raise ValueError("Cost must be non-negative")
+        
+        if self.time_required < 0.0:
+            raise ValueError("Time required must be non-negative")
+    
+    @property
+    def scopeChanged(self) -> bool:
+        """Backward compatibility property for scopeChanged"""
+        return self.scope_changed
+    
+    @property
+    def ransomWare(self) -> bool:
+        """Backward compatibility property for ransomWare"""
+        return self.ransomware
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert vulnerability to dictionary for serialization"""
@@ -93,7 +114,9 @@ class Vulnerability:
             'exploit': self.exploit,
             'epss': self.epss,
             'ransomWare': self.ransomware,
-            'component_id': self.component_id
+            'component_id': self.component_id,
+            'cost': self.cost,
+            'time_required': self.time_required
         }
     
     @classmethod
@@ -109,7 +132,9 @@ class Vulnerability:
             exploit=data.get('exploit', False),
             epss=data.get('epss', 0.0),
             ransomware=data.get('ransomWare', False),
-            component_id=data.get('component_id', '')
+            component_id=data.get('component_id', ''),
+            cost=data.get('cost', 1.0),
+            time_required=data.get('time_required', 1.0)
         )
 
 
@@ -211,8 +236,8 @@ class Asset:
             raise ValueError("Asset ID is required")
         if not self.name:
             raise ValueError("Asset name is required")
-        if not (1 <= self.criticality_level <= 5):
-            raise ValueError("Criticality level must be between 1 and 5")
+        if not (1 <= self.criticality_level <= 6):
+            raise ValueError("Criticality level must be between 1 and 6")
     
     def add_component(self, component: Component) -> None:
         """Add a component to this asset"""
@@ -301,9 +326,13 @@ class System:
     
     def add_connection(self, connection: Dict[str, Any]) -> None:
         """Add a network connection between assets"""
-        required_fields = ['src_ip', 'dst_ip']
-        if not all(field in connection for field in required_fields):
-            raise ValueError(f"Connection must contain: {required_fields}")
+        # Support both IP-based and asset ID-based connection formats
+        ip_based = all(field in connection for field in ['src_ip', 'dst_ip'])
+        asset_id_based = all(field in connection for field in ['source_asset_id', 'destination_asset_id'])
+        
+        if not (ip_based or asset_id_based):
+            raise ValueError(f"Connection must contain either ['src_ip', 'dst_ip'] or ['source_asset_id', 'destination_asset_id']")
+        
         self.connections.append(connection)
     
     def get_vulnerability_count(self) -> int:

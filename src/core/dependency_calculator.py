@@ -52,20 +52,30 @@ class DependencyCalculator:
         # Create dependency graph
         G = self._build_dependency_graph(data, inter_dependencies)
         
-        # Calculate centrality for the entire graph
-        centrality_tensor, component_centrality = self.risk_calculator.calculate_centrality(G)
+        # Calculate both structural and network centrality
+        centrality_results = self.risk_calculator.calculate_centrality(G, 'hybrid')
         
-        # Convert component centrality to dictionary with string keys
-        component_centrality_dict = {
-            str(node): centrality for node, centrality in component_centrality.items()
+        # Extract structural and network centrality
+        structural_tensor, structural_centrality = centrality_results['structural']
+        network_tensor, network_centrality = centrality_results['network']
+        
+        # Convert to dictionaries with string keys
+        structural_centrality_dict = {
+            str(node): centrality for node, centrality in structural_centrality.items()
+        }
+        network_centrality_dict = {
+            str(node): centrality for node, centrality in network_centrality.items()
         }
         
-        # Aggregate centrality to compute asset centrality
-        asset_centrality = self._calculate_asset_centrality(data, component_centrality_dict)
+        # Aggregate centrality to compute asset centrality (use network to capture topology differences)
+        asset_centrality = self._calculate_asset_centrality(data, network_centrality_dict)
         
         return {
             'asset_centrality': asset_centrality,
-            'component_centrality': component_centrality_dict
+            'component_centrality': {
+                'structural': structural_centrality_dict,
+                'network': network_centrality_dict
+            }
         }
     
     def _load_inter_dependencies(self, scenario_id: str) -> List[Tuple[str, str, str]]:
@@ -172,13 +182,12 @@ class DependencyCalculator:
             components = asset.components
             
             if has_meaningful_centrality and components:
-                # Calculate maximum centrality for components in this asset (not average)
-                # Use max because the most critical component determines asset importance
+                # FOLLOW OLD LOGIC EXACTLY: Use AVERAGE centrality for components in this asset
                 centrality_values = [
                     component_centrality.get(f"A{asset_id}_{comp.name}", 0)
                     for comp in components
                 ]
-                asset_centrality[asset_id] = max(centrality_values) if centrality_values else 0
+                asset_centrality[asset_id] = sum(centrality_values) / len(components) if centrality_values else 0
             else:
                 # Fallback based on asset business criticality when centrality fails
                 # Normalize business criticality to 0-1 range
